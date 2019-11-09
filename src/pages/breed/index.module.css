@@ -1,0 +1,26 @@
+.root {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header_section {
+    align-self: flex-end;
+    width: calc(1200px + (100% - 1200px) / 2 );
+}
+
+.header_content {
+    display: flex;
+    width: 100%;
+}
+
+.header_img {
+    width: 560px;
+    height: 426px;
+    margin-left: 60px;
+}
+
+.section {
+    width: 1200px;
+}
