@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rat-spa/static/css/main.db398a4f.chunk.css",
-    "main.js": "/rat-spa/static/js/main.91f906f0.chunk.js",
-    "main.js.map": "/rat-spa/static/js/main.91f906f0.chunk.js.map",
+    "main.css": "/rat-spa/static/css/main.08aee8d4.chunk.css",
+    "main.js": "/rat-spa/static/js/main.8eede040.chunk.js",
+    "main.js.map": "/rat-spa/static/js/main.8eede040.chunk.js.map",
     "runtime-main.js": "/rat-spa/static/js/runtime-main.2cf4f83e.js",
     "runtime-main.js.map": "/rat-spa/static/js/runtime-main.2cf4f83e.js.map",
-    "static/js/2.78ce3062.chunk.js": "/rat-spa/static/js/2.78ce3062.chunk.js",
-    "static/js/2.78ce3062.chunk.js.map": "/rat-spa/static/js/2.78ce3062.chunk.js.map",
+    "static/js/2.75c807cb.chunk.js": "/rat-spa/static/js/2.75c807cb.chunk.js",
+    "static/js/2.75c807cb.chunk.js.map": "/rat-spa/static/js/2.75c807cb.chunk.js.map",
     "index.html": "/rat-spa/index.html",
-    "precache-manifest.53fc128cb94d919fa4a4b34d0fe0afd7.js": "/rat-spa/precache-manifest.53fc128cb94d919fa4a4b34d0fe0afd7.js",
+    "precache-manifest.1c6be49827b76d62c14fc1cf0f94a0a7.js": "/rat-spa/precache-manifest.1c6be49827b76d62c14fc1cf0f94a0a7.js",
     "service-worker.js": "/rat-spa/service-worker.js",
-    "static/css/main.db398a4f.chunk.css.map": "/rat-spa/static/css/main.db398a4f.chunk.css.map",
+    "static/css/main.08aee8d4.chunk.css.map": "/rat-spa/static/css/main.08aee8d4.chunk.css.map",
     "static/media/atlas_breed.jpg": "/rat-spa/static/media/atlas_breed.9c117db7.jpg",
     "static/media/bg.jpg": "/rat-spa/static/media/bg.411468de.jpg",
     "static/media/curly_breed.jpg": "/rat-spa/static/media/curly_breed.99a18eb1.jpg",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.2cf4f83e.js",
-    "static/js/2.78ce3062.chunk.js",
-    "static/css/main.db398a4f.chunk.css",
-    "static/js/main.91f906f0.chunk.js"
+    "static/js/2.75c807cb.chunk.js",
+    "static/css/main.08aee8d4.chunk.css",
+    "static/js/main.8eede040.chunk.js"
   ]
 }
