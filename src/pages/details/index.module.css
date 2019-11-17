@@ -23,44 +23,5 @@
 
 .section {
     width: 1200px;
-}
-
-.breeds {
-    display: flex;
-    width: 100%;
-    flex-flow: row wrap;
-}
-
-.breed {
-    position: relative;
-    margin: 0 40px 40px 0;
-    width: 360px;
-    height: 310px;
-    background-color: #423D3D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: RatHelveticaRounded, RatHelvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 35px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
-
-.breed_cover {
-    display: inline-block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    opacity: 0;
-}
-
-.breed_cover:hover {
-    opacity: 1;
-}
-
-.breed_cover_img {
-    height: 100%;
+    margin-bottom: 200px;
 }

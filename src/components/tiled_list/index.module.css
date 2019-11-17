@@ -1,0 +1,17 @@
+.tiled_list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tile {
+    margin:0;
+    padding: 0;
+    text-indent: 0;
+}
+
+.tile:not(:nth-child(3n)){
+    margin-right: 40px;
+}

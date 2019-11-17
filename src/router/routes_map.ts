@@ -2,25 +2,24 @@ import {ComponentType} from "react";
 import {HomePage} from "../pages/home";
 import {DetailsPage} from "../pages/details";
 import {BreedPage} from "../pages/breed";
+import {Dictionary} from "../types/dictioanary";
 
-export enum ROUTE_TYPES {
+const BASE = process.env.NODE_ENV === 'production' ? "/rat-spa" : "";
+
+export enum RouteType {
     HOME = 'HOME',
     DETAILS = 'DETAILS',
-    BREED = 'BREED'
+    SORT = 'BREED'
 }
 
 export const ROUTES_MAP = {
-    [ROUTE_TYPES.HOME]: '/',
-    [ROUTE_TYPES.DETAILS]: '/details',
-    [ROUTE_TYPES.BREED]: '/breeds/:id'
+    [RouteType.HOME]: `${BASE}/`,
+    [RouteType.DETAILS]: `${BASE}/details`,
+    [RouteType.SORT]: `${BASE}/sort/:id'`
 };
 
-type ComponentsMap = {
-    [key: string]: ComponentType
-}
-
-export const COMPONENTS_MAP: ComponentsMap = {
-    [ROUTE_TYPES.HOME]: HomePage,
-    [ROUTE_TYPES.DETAILS]: DetailsPage,
-    [ROUTE_TYPES.BREED]: BreedPage
+export const COMPONENTS_MAP: Dictionary<ComponentType> = {
+    [RouteType.HOME]: HomePage,
+    [RouteType.DETAILS]: DetailsPage,
+    [RouteType.SORT]: BreedPage
 };
