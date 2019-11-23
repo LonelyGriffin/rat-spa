@@ -8,11 +8,17 @@ type InnerProps = {
     img: string
 }
 
-export const SortTile = (props: InnerProps) => (
-    <div className={css.root}>
-        {props.name}
-        <Link to={{type: RouteType.SORT, payload: {id: props.name}}} className={css.cover}>
-            <img className={css.cover_img} src={props.img} alt={props.name}/>
-        </Link>
-    </div>
-)
+export const SortTile = (props: InnerProps) => {
+
+
+    return (
+        <div className={css.root}>
+            <span className={css.title}>
+                {props.name}
+            </span>
+            <Link to={{type: RouteType.SORT, payload: {id: props.name}}} className={css.cover}>
+                <img className={css.cover_img} src={props.img} alt={props.name}/>
+            </Link>
+        </div>
+    )
+}
