@@ -3,17 +3,34 @@
     height: 100%;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.body {
+    background-color: aquamarine;
+    position: relative;
 }
 
 .wheel {
     position: absolute;
-    top: calc(100% /2 - 1000px);
-    left: -1950px;
-    left: calc(-2000px / 2 - 950px);
-    width: 2000px;
-    height: 2000px;
-    border-radius: 1000px;
     background-color: #423D3D;
+    top: 0;
+    left: 0;
+}
+
+.bands {
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+.band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: bisque;
 }
 
 .hover_register {
@@ -25,12 +42,4 @@
     border-radius: 1100px;
     background-color: #423D3D;
     opacity: 0.3;
-}
-
-.line {
-    position: absolute;
-    left: 0;
-    width: 300px;
-    height: 50px;
-    background-color: red;
 }

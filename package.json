@@ -5,6 +5,7 @@
   "homepage": "https://lonelygriffin.github.io/rat-spa/",
   "dependencies": {
     "@types/classnames": "2.2.9",
+    "@types/gsap": "1.20.2",
     "@types/jest": "24.0.22",
     "@types/node": "12.12.7",
     "@types/react": "16.9.11",
@@ -12,6 +13,7 @@
     "@types/redux-first-router-link": "1.4.4",
     "bezier-easing": "2.1.0",
     "classnames": "2.2.6",
+    "gsap": "3.0.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "7.1.3",

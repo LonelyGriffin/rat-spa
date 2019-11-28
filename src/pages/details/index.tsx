@@ -5,12 +5,12 @@ import {TiledList} from "../../components/tiled_list";
 import {SORTS_BY_BODY_TYPE, SORTS_BY_COLOR, SORTS_BY_VARIETY, SORTS_BY_WOOL_TYPE} from "./data";
 import {SortTile} from "./sort_tile";
 import {Uppercase} from "../../components/uppercase";
-// import {NavigationPanel} from "./navigation_panel";
+import {NavigationPanel} from "./navigation_panel";
 
 export const DetailsPage = () => {
     return (
         <div className={css.root}>
-            {/*<NavigationPanel />*/}
+            <NavigationPanel />
             <header className={css.header_section}>
                 <h1>Декоративная крыса</h1>
                 <div className={css.header_content}>

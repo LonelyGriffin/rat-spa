@@ -9,16 +9,15 @@ type InnerProps = {
 }
 
 export const SortTile = (props: InnerProps) => {
-
-
     return (
-        <div className={css.root}>
+        <Link to={{type: RouteType.SORT, payload: {id: props.name}}} className={css.root}>
+            <div className={css.bubble}/>
             <span className={css.title}>
                 {props.name}
             </span>
-            <Link to={{type: RouteType.SORT, payload: {id: props.name}}} className={css.cover}>
+            <div className={css.cover}>
                 <img className={css.cover_img} src={props.img} alt={props.name}/>
-            </Link>
-        </div>
+            </div>
+        </Link>
     )
 }
