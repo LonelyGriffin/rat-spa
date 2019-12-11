@@ -6,11 +6,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100000;
 }
 
 .body {
-    background-color: aquamarine;
+    /*background-color: rgba(222, 222, 222, 0.05);*/
     position: relative;
+    z-index: 100000;
+}
+
+.bubble {
+    position: absolute;
+    background-color: rgba(222, 222, 222, 0.05);
+}
+.base {
+    position: absolute;
+    background-color: #222325;
+    /*opacity: 0.98;*/
 }
 
 .wheel {
@@ -18,6 +30,8 @@
     background-color: #423D3D;
     top: 0;
     left: 0;
+    border: solid #222325 5px;
+    box-sizing: border-box;
 }
 
 .bands {
@@ -30,7 +44,21 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: bisque;
+    background-color: #423D3D;
+    cursor: pointer;
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bandIcon {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 15px;
+    color: black;
+
 }
 
 .hover_register {

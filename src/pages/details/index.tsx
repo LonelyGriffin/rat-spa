@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import css from "./index.module.css";
 import headerImg from "./img/header.jpg";
 import {TiledList} from "../../components/tiled_list";
@@ -8,9 +8,11 @@ import {Uppercase} from "../../components/uppercase";
 import {NavigationPanel} from "./navigation_panel";
 
 export const DetailsPage = () => {
+    const [active, setActive] = useState(0);
+
     return (
         <div className={css.root}>
-            <NavigationPanel />
+            <NavigationPanel active={active} onBandClick={(a) => setActive(a)}/>
             <header className={css.header_section}>
                 <h1>Декоративная крыса</h1>
                 <div className={css.header_content}>
