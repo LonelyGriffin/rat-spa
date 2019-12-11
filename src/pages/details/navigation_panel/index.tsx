@@ -139,18 +139,14 @@ export const NavigationPanel = (props: OuterProps) => {
                     : fractionalRelativeShift <= 0.5 ? 2 * fractionalRelativeShift * BAND_HEIGHT + bandSpace - halfBandHeight + BAND_PADDING
                     : -2 * (1 - fractionalRelativeShift) * BAND_HEIGHT - halfBandHeight + BAND_PADDING;
 
-                // console.log(i, centralY, bandSpace, y, fractionalRelativeShift, bandSpace + BAND_PADDING / 2)
 
-                // const y = ((bandSpace - BAND_HEIGHT) / (bands.length - 1)) * i + BAND_PADDING;
-
-
-                const distanceToWaveCenter = waveCenterY - y + halfBandHeight;
+                const distanceToWaveCenter = waveCenterY - y - halfBandHeight;
                 const currentHalfWave = Math.sign(distanceToWaveCenter) > 0
                     ? waveCenterY
                     : HEIGHT - waveCenterY;
 
                 const width = Math.cos(0.5 * Math.PI * Math.abs(distanceToWaveCenter / currentHalfWave)) * maxWidth + MIN_BAND_WIDTH + (visibleWidth - MIN_VISIBLE_WHEEL_WIDTH)
-                // const width = 200;
+
                 ref!.style.width = `${width}px`;
                 ref!.style.height = `${BAND_HEIGHT}px`;
                 ref!.style.transform = `translate(0, ${y}px)`;
@@ -268,7 +264,7 @@ export const NavigationPanel = (props: OuterProps) => {
                 onUpdate: (params) => {
                     const relativeShift = getRelativeShift(props.active, prevActive, bands.length, params.ratio);
 
-                    updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
+                    updateBands(MAX_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
                 }
             });
         } else {
