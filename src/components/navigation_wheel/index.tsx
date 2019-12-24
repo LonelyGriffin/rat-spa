@@ -1,9 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import css from "./index.module.css";
 import GSAP from "gsap";
-import {act} from "react-dom/test-utils";
-
-const bands = [1 , 2, 3, 4, 5, 6, 7];
 
 const getRelativeShift = (activeIndex: number, prevIndex: number, count: number, progress: number) => {
     const n = Math.floor(count / 2);
@@ -21,9 +18,12 @@ const getRelativeShift = (activeIndex: number, prevIndex: number, count: number,
     return result;
 };
 
-type OuterProps = {
-    active: number,
-    onBandClick: (key: number) => void
+type OuterProps<T> = {
+    items: T[]
+    extractKey: (item: T) => string
+    extractTitle: (item: T) => string
+    currentItemKey: string
+    onItemClick: (key: string) => void
 }
 
 function usePrevious<T>(value: T) {
@@ -37,7 +37,10 @@ function usePrevious<T>(value: T) {
 }
 
 
-export const NavigationPanel = (props: OuterProps) => {
+export function NavigationWheel<T>(props: OuterProps<T>) {
+    const {items, extractKey, extractTitle, currentItemKey, onItemClick} = props
+    const currentItemIndex = items.findIndex(item => extractKey(item) === currentItemKey)
+
     const BORDER_WIDTH = 1;
     const HEIGHT = 650;
     const MIN_WIDTH = 210;
@@ -55,7 +58,7 @@ export const NavigationPanel = (props: OuterProps) => {
     const baseRef = useRef<HTMLDivElement>(null);
     const bubbleRef = useRef<HTMLDivElement>(null);
     const wheelRef = useRef<HTMLDivElement>(null);
-    const bandRefs = useRef(new Map<number, HTMLDivElement>()).current;
+    const bandRefs = useRef(new Map<string, HTMLDivElement>()).current;
 
     const waveCenterYRef = useRef(HEIGHT / 2);
     const expandAnimationRef = useRef(false);
@@ -121,7 +124,7 @@ export const NavigationPanel = (props: OuterProps) => {
         wheel.style.transform = `translate(${-wheelRadius * 2 + visibleWidth}px, ${HEIGHT / 2 - wheelRadius}px)`
     };
     const updateBands = (visibleWidth: number, waveCenterY: number, maxWidth: number, relativeShift: number) => {
-        const length = bands.length;
+        const length = items.length;
         const halfBandHeight = BAND_HEIGHT / 2;
         const bandSpace = HEIGHT - 2 * BAND_PADDING;
         const oneBandSpace = bandSpace / (length - 1);
@@ -130,8 +133,9 @@ export const NavigationPanel = (props: OuterProps) => {
         const centralShift = oneBandSpace * (integerRelativeShift % length + fractionalRelativeShift);
 
         for(let i = 0; i < length; i++) {
-            if (bandRefs.has(i)) {
-                const ref = bandRefs.get(i);
+            const key = extractKey(items[i]);
+            if (bandRefs.has(key)) {
+                const ref = bandRefs.get(key);
 
                 const centralY = oneBandSpace * i + centralShift;
                 const y = centralY <= bandSpace ? centralY - halfBandHeight + BAND_PADDING
@@ -170,7 +174,7 @@ export const NavigationPanel = (props: OuterProps) => {
                 const wheelWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_VISIBLE_WHEEL_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * params.ratio;
                 const waveCenterY = waveCenterYRef.current - (waveCenterYRef.current - fromY) * (1 - params.ratio);
                 const maxBandWidth = MAX_BAND_WIDTH_ON_HOVER - (MAX_BAND_WIDTH_ON_HOVER - MAX_BAND_WIDTH) * (1 - params.ratio);
-                const relativeShift = getRelativeShift(props.active, props.active, bands.length, 0);
+                const relativeShift = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
                 updateWheel(wheelWidth);
                 updateBands(wheelWidth, waveCenterY, maxBandWidth, relativeShift);
             }
@@ -206,7 +210,7 @@ export const NavigationPanel = (props: OuterProps) => {
                 const wheelWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_VISIBLE_WHEEL_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * (1 - params.ratio);
                 const waveCenterY = toY - (toY - fromY) * (1 - params.ratio);
                 const maxBandWidth = MAX_BAND_WIDTH - (MAX_BAND_WIDTH - MAX_BAND_WIDTH_ON_HOVER) * (1 - params.ratio);
-                const relativeShift = getRelativeShift(props.active, props.active, bands.length, 0);
+                const relativeShift = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
 
                 updateWheel(wheelWidth);
                 updateBands(wheelWidth, waveCenterY, maxBandWidth, relativeShift);
@@ -235,7 +239,7 @@ export const NavigationPanel = (props: OuterProps) => {
         updateWaveCenterYByMouse(e.clientY);
         if (!expandAnimationRef.current && !rotateAnimationRef.current) {
             const wheelWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_VISIBLE_WHEEL_WIDTH - MIN_VISIBLE_WHEEL_WIDTH);
-            const relativeShift = getRelativeShift(props.active, props.active, bands.length, 0);
+            const relativeShift = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
 
             updateWheel(wheelWidth);
             updateBands(wheelWidth, waveCenterYRef.current, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
@@ -243,7 +247,7 @@ export const NavigationPanel = (props: OuterProps) => {
     };
 
     useEffect(() => {
-        const activeIndex = getRelativeShift(props.active, props.active, bands.length, 0);
+        const activeIndex = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
 
         updateBody(MIN_WIDTH);
         updateWheel(MIN_VISIBLE_WHEEL_WIDTH);
@@ -251,7 +255,7 @@ export const NavigationPanel = (props: OuterProps) => {
         updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH, activeIndex);
     }, []);
 
-    const prevActive = usePrevious(props.active);
+    const prevActive = usePrevious(currentItemIndex);
     useEffect(() => {
         if (prevActive || prevActive === 0) {
             rotateAnimationRef.current = true;
@@ -262,16 +266,16 @@ export const NavigationPanel = (props: OuterProps) => {
                     rotateAnimationRef.current = false;
                 },
                 onUpdate: (params) => {
-                    const relativeShift = getRelativeShift(props.active, prevActive, bands.length, params.ratio);
+                    const relativeShift = getRelativeShift(currentItemIndex, prevActive, items.length, params.ratio);
 
                     updateBands(MAX_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
                 }
             });
         } else {
-            const currentIndex = getRelativeShift(props.active, props.active, bands.length, 1);
+            const currentIndex = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 1);
             updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH, currentIndex);
         }
-    }, [props.active]);
+    }, [currentItemKey]);
 
     return (
         <div className={css.root}>
@@ -285,16 +289,17 @@ export const NavigationPanel = (props: OuterProps) => {
                 <div className={css.bubble} ref={bubbleRef}/>
                 <div className={css.base} ref={baseRef}/>
                 <div className={css.bands}>
-                    {bands.map((pos, i) => {
-                        const key = i;
+                    {items.map(item => {
+                        const key = extractKey(item);
+                        const title = extractTitle(item);
 
                         return <div
-                          onClick={() => props.onBandClick(i)}
+                          onClick={() => onItemClick(key)}
                           key={key}
                           className={css.band}
                           ref={inst => inst === null ? bandRefs.delete(key) : bandRefs.set(key, inst)}
                         >
-                            <div className={css.bandIcon}>{key}</div>
+                            <div className={css.bandIcon}>{title}</div>
                         </div>
                     })}
                 </div>
@@ -305,4 +310,4 @@ export const NavigationPanel = (props: OuterProps) => {
             </div>
         </div>
     )
-};
+}
