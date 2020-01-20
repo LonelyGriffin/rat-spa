@@ -1,0 +1,13 @@
+.root {
+    position: relative;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.container {
+    display: flex;
+}
+
+.item {
+    transition: transform 0.7s ease-out;
+}

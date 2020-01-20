@@ -1,0 +1,11 @@
+.root {
+    --diametr: 5000px;
+    height: var(--diametr);
+    width: var(--diametr);
+    border-radius: var(--diametr);
+    position: absolute;
+    right: 600px;
+    top: calc(50% - var(--diametr) / 2);
+    border: 2px solid rgba(182, 141, 64, 0.5);
+    pointer-events: none;
+}

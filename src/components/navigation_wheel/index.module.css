@@ -1,12 +1,13 @@
 .root {
     position: fixed;
-    height: 100%;
+    height: calc(100% - 130px);
     top: 0;
     left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100000;
+    margin-top: 130px;
 }
 
 .body {
@@ -47,16 +48,16 @@
     background-color: #423D3D;
     cursor: pointer;
     display: flex;
-
     justify-content: flex-end;
     align-items: center;
+    padding-right: 10px;
 }
 
 .bandIcon {
-    width: 30px;
-    height: 30px;
+    width: 64px;
+    height: 64px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 32px;
     color: black;
 
 }
@@ -70,4 +71,13 @@
     border-radius: 1100px;
     background-color: #423D3D;
     opacity: 0.3;
+}
+
+.shadow {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(100% 98.49% at 0% 50.06%, rgba(34, 35, 37, 0.9) 0%, rgba(34, 35, 37, 0.81) 78.95%, rgba(34, 35, 37, 0) 100%);
 }

@@ -35,7 +35,7 @@ html, body, #root {
   background-color: #222325;
   margin: 0;
   padding: 0;
-  color: white;
+  color: #F4EBD0;
   font-family: RatHelvetica, "Helvetica Neue", Helvetica, Arial, serif;
   font-size: 28px;
   line-height: 120%;
@@ -47,22 +47,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 62px;
   line-height: 118px;
-}
-
-h2 {
-  font-size: 80px;
-  line-height: 94px;
-}
-
-h3 {
-  font-size: 60px;
-  line-height: 71px;
-}
-
-p {
-  font-size: 28px;
-  line-height: 34px;
-  margin-block-start: 0;
 }

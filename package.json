@@ -15,6 +15,7 @@
     "classnames": "2.2.6",
     "gsap": "3.0.1",
     "lodash-es": "4.17.15",
+    "pure-react-carousel": "^1.24.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "7.1.3",

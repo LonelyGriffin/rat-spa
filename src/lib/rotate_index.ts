@@ -1,0 +1,2 @@
+export const nextRotationIndex = (index: number, totalCount: number) => index < totalCount - 1 ? index + 1 : 0;
+export const prevRotationIndex = (index: number, totalCount: number) => index > 0 ? index - 1 : totalCount - 1;

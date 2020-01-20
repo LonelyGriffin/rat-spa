@@ -42,17 +42,17 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
     const currentItemIndex = items.findIndex(item => extractKey(item) === currentItemKey)
 
     const BORDER_WIDTH = 1;
-    const HEIGHT = 650;
-    const MIN_WIDTH = 210;
+    const HEIGHT = 550;
+    const MIN_WIDTH = 220;
     const MAX_WIDTH = 500;
     const MAX_BASE_HEIGHT = 1600;
-    const MIN_VISIBLE_WHEEL_WIDTH = 40;
-    const MAX_VISIBLE_WHEEL_WIDTH = 100;
-    const MIN_BAND_WIDTH = 70;
-    const MAX_BAND_WIDTH = 100;
+    const MIN_VISIBLE_WHEEL_WIDTH = 20;
+    const MAX_VISIBLE_WHEEL_WIDTH = 40;
+    const MIN_BAND_WIDTH = 55;
+    const MAX_BAND_WIDTH = 60;
     const MAX_BAND_WIDTH_ON_HOVER = 300;
-    const BAND_HEIGHT = 60;
-    const BAND_PADDING = 60;
+    const BAND_HEIGHT = 80;
+    const BAND_PADDING = 80;
 
     const bodyRef = useRef<HTMLDivElement>(null);
     const baseRef = useRef<HTMLDivElement>(null);
@@ -182,7 +182,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
         GSAP.to(baseRef.current!, {
             duration: 0.5,
             ease: "power4.in",
-            border: 'solid 3px #FBD46D',
+            border: 'solid 3px rgba(251, 212, 109, 0.5)',
             onUpdate: (params) => {
                 const baseWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * params.ratio;
                 const baseHeight = HEIGHT + (MAX_BASE_HEIGHT - HEIGHT) * params.ratio;
@@ -279,6 +279,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
 
     return (
         <div className={css.root}>
+            <div className={css.shadow}/>
             <div
               ref={bodyRef}
               className={css.body}
@@ -299,7 +300,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                           className={css.band}
                           ref={inst => inst === null ? bandRefs.delete(key) : bandRefs.set(key, inst)}
                         >
-                            <div className={css.bandIcon}>{title}</div>
+                            <div className={css.bandIcon}></div>
                         </div>
                     })}
                 </div>
