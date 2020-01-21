@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/rat-spa/static/css/main.2cef5438.chunk.css",
-    "main.js": "/rat-spa/static/js/main.13a45662.chunk.js",
-    "main.js.map": "/rat-spa/static/js/main.13a45662.chunk.js.map",
+    "main.css": "/rat-spa/static/css/main.fd523a46.chunk.css",
+    "main.js": "/rat-spa/static/js/main.32163444.chunk.js",
+    "main.js.map": "/rat-spa/static/js/main.32163444.chunk.js.map",
     "runtime-main.js": "/rat-spa/static/js/runtime-main.2cf4f83e.js",
     "runtime-main.js.map": "/rat-spa/static/js/runtime-main.2cf4f83e.js.map",
-    "static/js/2.90cbcccf.chunk.js": "/rat-spa/static/js/2.90cbcccf.chunk.js",
-    "static/js/2.90cbcccf.chunk.js.map": "/rat-spa/static/js/2.90cbcccf.chunk.js.map",
+    "static/js/2.b4890f62.chunk.js": "/rat-spa/static/js/2.b4890f62.chunk.js",
+    "static/js/2.b4890f62.chunk.js.map": "/rat-spa/static/js/2.b4890f62.chunk.js.map",
     "index.html": "/rat-spa/index.html",
-    "precache-manifest.5951f3f0ad2a049ca1660569b56ad8f0.js": "/rat-spa/precache-manifest.5951f3f0ad2a049ca1660569b56ad8f0.js",
+    "precache-manifest.0427d2a7d0e0f6180cb8974aa7873785.js": "/rat-spa/precache-manifest.0427d2a7d0e0f6180cb8974aa7873785.js",
     "service-worker.js": "/rat-spa/service-worker.js",
-    "static/css/main.2cef5438.chunk.css.map": "/rat-spa/static/css/main.2cef5438.chunk.css.map",
+    "static/css/main.fd523a46.chunk.css.map": "/rat-spa/static/css/main.fd523a46.chunk.css.map",
     "static/media/index.css": "/rat-spa/static/media/helvetica_rounded_bold.042c8121.otf",
+    "static/media/how_care.svg": "/rat-spa/static/media/how_care.8902c368.svg",
+    "static/media/how_find.svg": "/rat-spa/static/media/how_find.1a8ace1d.svg",
+    "static/media/life.svg": "/rat-spa/static/media/life.9ea7fddc.svg",
+    "static/media/main.svg": "/rat-spa/static/media/main.99668589.svg",
     "static/media/rat_1.jpg": "/rat-spa/static/media/rat_1.8225923a.jpg",
     "static/media/rat_10.jpg": "/rat-spa/static/media/rat_10.5b6f1701.jpg",
     "static/media/rat_11.jpg": "/rat-spa/static/media/rat_11.c6642b0b.jpg",
@@ -32,12 +36,13 @@
     "static/media/rat_6.jpg": "/rat-spa/static/media/rat_6.dbba5e3d.jpg",
     "static/media/rat_7.jpg": "/rat-spa/static/media/rat_7.d957afc8.jpg",
     "static/media/rat_8.jpg": "/rat-spa/static/media/rat_8.938a9460.jpg",
-    "static/media/rat_9.jpg": "/rat-spa/static/media/rat_9.59b14eb0.jpg"
+    "static/media/rat_9.jpg": "/rat-spa/static/media/rat_9.59b14eb0.jpg",
+    "static/media/sorts.svg": "/rat-spa/static/media/sorts.6ff512f4.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2cf4f83e.js",
-    "static/js/2.90cbcccf.chunk.js",
-    "static/css/main.2cef5438.chunk.css",
-    "static/js/main.13a45662.chunk.js"
+    "static/js/2.b4890f62.chunk.js",
+    "static/css/main.fd523a46.chunk.css",
+    "static/js/main.32163444.chunk.js"
   ]
 }
