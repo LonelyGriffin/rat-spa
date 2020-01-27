@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/rat-spa/precache-manifest.0427d2a7d0e0f6180cb8974aa7873785.js"
+  "/rat-spa/precache-manifest.8c353d6fe7ce02aa171fa09f51c7395a.js"
 );
 
 self.addEventListener('message', (event) => {
