@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <link rel="icon" href="/favicon.ico"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="theme-color" content="#222325"/>
-    <meta name="description" content="Web site created using create-react-app"/>
-    <link rel="apple-touch-icon" href="logo192.png"/>
-    <link rel="manifest" href="/manifest.json"/>
+    <link href="/favicon.ico" rel="icon"/>
+    <meta content="width=device-width,initial-scale=1" name="viewport"/>
+    <meta content="#222325" name="theme-color"/>
+    <link href="logo192.png" rel="apple-touch-icon"/>
+    <link href="/manifest.json" rel="manifest"/>
     <title>Rat island</title>
 </head>
 <style>
@@ -17,17 +16,27 @@
         margin: 0;
         padding: 0;
         background: #222325;
-    }
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        overflow: hidden;
     }
     .in-develop-img {
-        height: 90%;
+        min-height: 80%;
+        position: relative;
+        top: 10%;
+        margin: auto;
+    }
+
+    @media screen and (max-device-width: 780px) {
+        .in-develop-img {
+            min-height: 80%;
+            min-width: 200%;
+            left: -50%;
+            position: relative;
+            top: 10%;
+            margin: auto;
+        }
     }
 </style>
 <body>
-    <img class="in-develop-img" src="img/in-develop.svg" alt="Сайт в разработке">
+    <img alt="Сайт в разработке" class="in-develop-img" src="img/in-develop.svg">
 </body>
 </html>
