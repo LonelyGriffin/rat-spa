@@ -1,0 +1,47 @@
+.nav_item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-display: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav_item_content {
+    flex: 1;
+    position: relative;
+}
+
+.nav_item_title {
+    width: 1000px;
+    padding: 0 20px;
+    position: absolute;
+    text-align: right;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transition: opacity 0.5s cubic-bezier(0.995, 0.005, 0.520, 1.010);
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav_item_active .nav_item_title {
+    opacity: 1;
+}
+
+.nav_item_icon {
+    width: 64px;
+    height: 64px;
+}
+
+.loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

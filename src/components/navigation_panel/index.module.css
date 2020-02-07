@@ -43,7 +43,7 @@
 
 .panel:hover {
     cursor: pointer;
-    opacity: 0.9;
+    background: linear-gradient(270deg, #504b4b 32.81%, rgba(66, 61, 61, 0) 100%);
 }
 
 .active {

@@ -3,10 +3,6 @@ import css from './index.module.css';
 import cn from 'classnames';
 import GSAP from "gsap";
 
-export type NavigationPanelItem = {
-  title: string
-}
-
 type Props<T> = {
   items: T[]
   currentItemIndex: number

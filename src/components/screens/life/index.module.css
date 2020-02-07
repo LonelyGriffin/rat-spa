@@ -1,0 +1,34 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+    flex: 1;
+}
+.center {
+    width: 551px;
+    height: 551px;
+    position: relative;
+}
+
+.mouse {
+    position: absolute;
+    top: 0;
+    left: -143px; /* 694 - 551 */
+    background-image: url("./mouse.svg");
+    width: 694px;
+    height: 551px;
+}
+
+.title {
+    font-size: 62px;
+    line-height: 1.3;
+    margin: 0;
+    text-align: center;
+}

@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import css from "./index.module.css";
 import GSAP from "gsap";
+import cn from "classnames"
 
 const getRelativeShift = (activeIndex: number, prevIndex: number, count: number, progress: number) => {
     const n = Math.floor(count / 2);
@@ -21,9 +22,9 @@ const getRelativeShift = (activeIndex: number, prevIndex: number, count: number,
 type OuterProps<T> = {
     items: T[]
     extractKey: (item: T) => string
-    extractTitle: (item: T) => string
     currentItemKey: string
     onItemClick: (key: string) => void
+    renderItem: (item: T, isExpanded: boolean) => React.ReactNode
 }
 
 function usePrevious<T>(value: T) {
@@ -38,59 +39,31 @@ function usePrevious<T>(value: T) {
 
 
 export function NavigationWheel<T>(props: OuterProps<T>) {
-    const {items, extractKey, extractTitle, currentItemKey, onItemClick} = props
+    const {items, extractKey, currentItemKey, onItemClick} = props
     const currentItemIndex = items.findIndex(item => extractKey(item) === currentItemKey)
 
-    const BORDER_WIDTH = 1;
-    const HEIGHT = 550;
+    const HEIGHT = 500;
     const MIN_WIDTH = 220;
-    const MAX_WIDTH = 500;
-    const MAX_BASE_HEIGHT = 1600;
-    const MIN_VISIBLE_WHEEL_WIDTH = 20;
+    const MAX_WIDTH = 650;
+    const MIN_VISIBLE_WHEEL_WIDTH = 40;
     const MAX_VISIBLE_WHEEL_WIDTH = 40;
-    const MIN_BAND_WIDTH = 55;
-    const MAX_BAND_WIDTH = 60;
+    const MIN_BAND_WIDTH = 83;
+    const MAX_BAND_WIDTH = 43;
     const MAX_BAND_WIDTH_ON_HOVER = 300;
-    const BAND_HEIGHT = 80;
-    const BAND_PADDING = 80;
+    const MIN_BAND_WIDTH_ON_HOVER = 330;
+    const BAND_HEIGHT = 84;
+    const BAND_PADDING = 60;
 
     const bodyRef = useRef<HTMLDivElement>(null);
-    const baseRef = useRef<HTMLDivElement>(null);
-    const bubbleRef = useRef<HTMLDivElement>(null);
     const wheelRef = useRef<HTMLDivElement>(null);
     const bandRefs = useRef(new Map<string, HTMLDivElement>()).current;
 
     const waveCenterYRef = useRef(HEIGHT / 2);
     const expandAnimationRef = useRef(false);
+    const [isHovered, setIsHovered] = useState(false);
     const rotateAnimationRef = useRef(false);
 
-    const updateBase = (visibleWidth: number, visibleHeight: number, borderWidth: number) => {
-        const base = baseRef.current
 
-        if (base === null) {
-            return;
-        }
-
-        const baseRadius = (visibleWidth ** 2 + (visibleHeight / 2) ** 2) / (2 * visibleWidth);
-
-        base.style.height = base.style.width = `${2 * baseRadius}px`;
-        base.style.borderRadius = `${baseRadius}px`;
-        base.style.transform = `translate(${-baseRadius * 2 + visibleWidth}px, ${HEIGHT / 2 - baseRadius}px)`;
-        base.style.borderWidth = `${borderWidth}px`;
-    };
-    const updateBubble = (visibleWidth: number, visibleHeight: number) => {
-        const bubble = bubbleRef.current
-
-        if (bubble === null) {
-            return;
-        }
-
-        const baseRadius = (visibleWidth ** 2 + (visibleHeight / 2) ** 2) / (2 * visibleWidth);
-
-        bubble.style.height = bubble.style.width = `${2 * baseRadius}px`;
-        bubble.style.borderRadius = `${baseRadius}px`;
-        bubble.style.transform = `translate(${-baseRadius * 2 + visibleWidth}px, ${HEIGHT / 2 - baseRadius}px)`;
-    };
     const updateWaveCenterYByMouse = (mouseClientY: number) => {
         const body = bodyRef.current;
 
@@ -123,7 +96,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
         wheel.style.borderRadius = `${wheelRadius}px`;
         wheel.style.transform = `translate(${-wheelRadius * 2 + visibleWidth}px, ${HEIGHT / 2 - wheelRadius}px)`
     };
-    const updateBands = (visibleWidth: number, waveCenterY: number, maxWidth: number, relativeShift: number) => {
+    const updateBands = (visibleWidth: number, waveCenterY: number, minWidth: number, maxWidth: number, relativeShift: number) => {
         const length = items.length;
         const halfBandHeight = BAND_HEIGHT / 2;
         const bandSpace = HEIGHT - 2 * BAND_PADDING;
@@ -149,7 +122,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                     ? waveCenterY
                     : HEIGHT - waveCenterY;
 
-                const width = Math.cos(0.5 * Math.PI * Math.abs(distanceToWaveCenter / currentHalfWave)) * maxWidth + MIN_BAND_WIDTH + (visibleWidth - MIN_VISIBLE_WHEEL_WIDTH)
+                const width = Math.cos(0.5 * Math.PI * Math.abs(distanceToWaveCenter / currentHalfWave)) * maxWidth + minWidth + (visibleWidth - MIN_VISIBLE_WHEEL_WIDTH)
 
                 ref!.style.width = `${width}px`;
                 ref!.style.height = `${BAND_HEIGHT}px`;
@@ -160,6 +133,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
     }
 
     const mouseEnterHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        setIsHovered(true)
         expandAnimationRef.current = true;
         updateBody(MAX_WIDTH);
         updateWaveCenterYByMouse(e.clientY);
@@ -174,32 +148,15 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                 const wheelWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_VISIBLE_WHEEL_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * params.ratio;
                 const waveCenterY = waveCenterYRef.current - (waveCenterYRef.current - fromY) * (1 - params.ratio);
                 const maxBandWidth = MAX_BAND_WIDTH_ON_HOVER - (MAX_BAND_WIDTH_ON_HOVER - MAX_BAND_WIDTH) * (1 - params.ratio);
+                const minBandWidth = MIN_BAND_WIDTH_ON_HOVER - (MIN_BAND_WIDTH_ON_HOVER - MIN_BAND_WIDTH) * (1 - params.ratio);
                 const relativeShift = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
                 updateWheel(wheelWidth);
-                updateBands(wheelWidth, waveCenterY, maxBandWidth, relativeShift);
-            }
-        });
-        GSAP.to(baseRef.current!, {
-            duration: 0.5,
-            ease: "power4.in",
-            border: 'solid 3px rgba(251, 212, 109, 0.5)',
-            onUpdate: (params) => {
-                const baseWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * params.ratio;
-                const baseHeight = HEIGHT + (MAX_BASE_HEIGHT - HEIGHT) * params.ratio;
-                updateBase(baseWidth, baseHeight, params.ratio * BORDER_WIDTH);
-            }
-        });
-        GSAP.to(wheelRef.current!, {
-            duration: 0.5,
-            ease: "power4.out",
-            onUpdate: (params) => {
-                const baseWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * params.ratio;
-                const baseHeight = HEIGHT + (MAX_BASE_HEIGHT - HEIGHT) * params.ratio;
-                updateBubble(baseWidth, baseHeight);
+                updateBands(wheelWidth, waveCenterY, minBandWidth, maxBandWidth, relativeShift);
             }
         });
     };
     const mouseLeaveHandler = () => {
+        setIsHovered(false)
         updateBody(MIN_WIDTH);
         const fromY = waveCenterYRef.current;
         const toY = HEIGHT / 2;
@@ -210,28 +167,11 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                 const wheelWidth = MIN_VISIBLE_WHEEL_WIDTH + (MAX_VISIBLE_WHEEL_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * (1 - params.ratio);
                 const waveCenterY = toY - (toY - fromY) * (1 - params.ratio);
                 const maxBandWidth = MAX_BAND_WIDTH - (MAX_BAND_WIDTH - MAX_BAND_WIDTH_ON_HOVER) * (1 - params.ratio);
+                const minBandWidth = MIN_BAND_WIDTH - (MIN_BAND_WIDTH - MIN_BAND_WIDTH_ON_HOVER) * (1 - params.ratio);
                 const relativeShift = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
 
                 updateWheel(wheelWidth);
-                updateBands(wheelWidth, waveCenterY, maxBandWidth, relativeShift);
-            }
-        });
-        GSAP.to(wheelRef.current!, {
-            duration: 0.5,
-            ease: "power4.in",
-            onUpdate: (params) => {
-                const width = MIN_VISIBLE_WHEEL_WIDTH + (MAX_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * (1 - params.ratio);
-                const height = HEIGHT + (MAX_BASE_HEIGHT - HEIGHT) * (1 - params.ratio);
-                updateBase(width, height, (1 - params.ratio) * BORDER_WIDTH);
-            }
-        });
-        GSAP.to(wheelRef.current!, {
-            duration: 0.5,
-            ease: "power4.out",
-            onUpdate: (params) => {
-                const width = MIN_VISIBLE_WHEEL_WIDTH + (MAX_WIDTH - MIN_VISIBLE_WHEEL_WIDTH) * (1 - params.ratio);
-                const height = HEIGHT + (MAX_BASE_HEIGHT - HEIGHT) * (1 - params.ratio);
-                updateBubble(width, height);
+                updateBands(wheelWidth, waveCenterY, minBandWidth, maxBandWidth, relativeShift);
             }
         });
     };
@@ -242,7 +182,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
             const relativeShift = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 0);
 
             updateWheel(wheelWidth);
-            updateBands(wheelWidth, waveCenterYRef.current, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
+            updateBands(wheelWidth, waveCenterYRef.current, MIN_BAND_WIDTH_ON_HOVER, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
         }
     };
 
@@ -251,8 +191,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
 
         updateBody(MIN_WIDTH);
         updateWheel(MIN_VISIBLE_WHEEL_WIDTH);
-        updateBase(MIN_VISIBLE_WHEEL_WIDTH, HEIGHT, 0);
-        updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH, activeIndex);
+        updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MIN_BAND_WIDTH, MAX_BAND_WIDTH, activeIndex);
     }, []);
 
     const prevActive = usePrevious(currentItemIndex);
@@ -268,46 +207,49 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                 onUpdate: (params) => {
                     const relativeShift = getRelativeShift(currentItemIndex, prevActive, items.length, params.ratio);
 
-                    updateBands(MAX_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH_ON_HOVER, relativeShift);
+                    const minBandWidth = isHovered ? MIN_BAND_WIDTH_ON_HOVER : MIN_BAND_WIDTH
+                    const maxBandWidth = isHovered ? MAX_BAND_WIDTH_ON_HOVER : MAX_BAND_WIDTH
+
+                    updateBands(MAX_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, minBandWidth, maxBandWidth, relativeShift);
                 }
             });
         } else {
             const currentIndex = getRelativeShift(currentItemIndex, currentItemIndex, items.length, 1);
-            updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MAX_BAND_WIDTH, currentIndex);
+            updateBands(MIN_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, MIN_BAND_WIDTH, MAX_BAND_WIDTH, currentIndex);
         }
     }, [currentItemKey]);
 
     return (
         <div className={css.root}>
-            <div className={css.shadow}/>
-            <div
-              ref={bodyRef}
-              className={css.body}
-              onMouseEnter={mouseEnterHandler}
-              onMouseLeave={mouseLeaveHandler}
-              onMouseMove={mouseMoveHandler}
-            >
-                <div className={css.bubble} ref={bubbleRef}/>
-                <div className={css.base} ref={baseRef}/>
-                <div className={css.bands}>
-                    {items.map(item => {
-                        const key = extractKey(item);
-                        const title = extractTitle(item);
-
-                        return <div
-                          onClick={() => onItemClick(key)}
-                          key={key}
-                          className={css.band}
-                          ref={inst => inst === null ? bandRefs.delete(key) : bandRefs.set(key, inst)}
-                        >
-                            <div className={css.bandIcon}></div>
-                        </div>
-                    })}
-                </div>
+            <div className={cn(css.overlay, isHovered && css.overlay_active)}/>
+            <div className={css.shadow} />
+            <div className={css.container}>
                 <div
-                  className={css.wheel}
-                  ref={wheelRef}
-                />
+                  className={css.body}
+                  ref={bodyRef}
+                  onMouseEnter={mouseEnterHandler}
+                  onMouseLeave={mouseLeaveHandler}
+                  onMouseMove={mouseMoveHandler}
+                >
+                    <div className={css.bands}>
+                        {items.map((item, i) => {
+                            const key = extractKey(item);
+
+                            return <div
+                              onClick={() => onItemClick(key)}
+                              key={key}
+                              className={cn(css.band, i === currentItemIndex && css.band_active)}
+                              ref={inst => inst === null ? bandRefs.delete(key) : bandRefs.set(key, inst)}
+                            >
+                                {props.renderItem(item, isHovered)}
+                            </div>
+                        })}
+                    </div>
+                    <div
+                      className={css.wheel}
+                      ref={wheelRef}
+                    />
+                </div>
             </div>
         </div>
     )

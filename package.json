@@ -2,7 +2,7 @@
   "name": "rat-spa",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lonelygriffin.github.io/rat-spa/",
+  "homepage": "https://beta.rat-island.ru",
   "dependencies": {
     "@types/classnames": "2.2.9",
     "@types/gsap": "1.20.2",

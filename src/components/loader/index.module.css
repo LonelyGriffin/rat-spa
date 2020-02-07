@@ -1,0 +1,128 @@
+.root {
+    --size: 500px;
+    --panel-size: 50px;
+    width: var(--size);
+    height: var(--size);
+    position: relative;
+    animation: size 4s ease-in-out infinite;
+}
+
+.percent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    animation: percent 4s ease-in-out infinite;
+    font-size: 96px;
+}
+
+.base {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(196, 196, 196, 0) 0%, rgba(244, 235, 208, 0) 94.65%, rgba(244, 235, 208, 0.07) 100%);
+    border-radius: 50%;
+    position: relative;
+}
+
+.base::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform: translate(var(--panel-size), var(--panel-size));
+    width: calc(100% - 2 *  var(--panel-size));
+    height: calc(100% - 2 * var(--panel-size));
+    box-shadow: 0 0 15px rgba(244, 235, 208, 0.2);
+    border-radius: 50%;
+    background: #222325;
+}
+
+.panel {
+    --rotate: 0deg;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.panel::before {
+    content: '';
+    transform: translateX(calc(var(--size) / 2 - var(--panel-size) / 2));
+    border-radius: 50%;
+    position: absolute;
+    width: var(--panel-size);
+    height: var(--panel-size);
+    background: radial-gradient(48% 65.89% at 50% 50%, rgba(255, 255, 255, 0) 66.77%, rgba(244, 235, 208, 0.08) 100%), #423D3D;
+}
+
+.panel::after {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(rgba(66, 61, 61, 0) 80%, #423D3D 95%, #423D3D 100%);
+}
+
+.wheel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: wheel 4s ease-in-out infinite;
+}
+
+.panel_1 {
+    transform: rotate(0deg);
+}
+.panel_2 {
+    transform: rotate(72deg);
+}
+.panel_3 {
+    transform: rotate(144deg);
+}
+.panel_4 {
+    transform: rotate(216deg);
+}
+.panel_5 {
+    transform: rotate(288deg);
+}
+
+@keyframes wheel {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes size {
+    0% {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+    50% {
+        transform: matrix(1.2, 0, 0, 1.2, 0, 0);
+    }
+    100% {
+        transform: matrix(1, 0, 0, 1, 0, 0);
+    }
+}
+
+@keyframes percent {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

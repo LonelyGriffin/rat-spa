@@ -10,13 +10,14 @@ type Props = {
   items: NavigationPanelItem[]
   currentItemIndex: number
   onItemClick: (index: number) => void
+  classname?: string
 }
 
 export const NavigationPanel = (props: Props) => {
-  const {items, onItemClick, currentItemIndex} = props;
+  const {items, onItemClick, currentItemIndex, classname} = props;
 
   return (
-    <div className={css.root}>
+    <div className={cn(css.root, classname)}>
       {items.map((item, i) => (
         <div
           className={css.item}

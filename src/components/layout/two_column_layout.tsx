@@ -30,7 +30,7 @@ export const TwoColumnLayout = (props: Props) => {
         <aside className={css.right}>
           {renderRight && renderRight()}
         </aside>
-        {/*<BottomShadow />*/}
+        <BottomShadow classnames={css.bottomShadow}/>
       </main>
     </div>
   )

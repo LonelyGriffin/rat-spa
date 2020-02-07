@@ -13,13 +13,12 @@ type Props = {
   onPrev: () => void
 }
 
-
 type State = {
   slideIndex: number,
   sectionIndex: number
 }
 
-export class SortsScreen extends React.Component<Props, State> {
+export class HowChooseScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
@@ -105,11 +104,8 @@ export class SortsScreen extends React.Component<Props, State> {
               onPrev={this.handlePrevCarouselItem}
               onNext={this.handleNextCarouselItem}
               notActiveScale={0.8}
-              renderItem={(section, isActive) => (
-                <Item
-                  images={section.images}
-                  isActive={isActive}
-                />
+              renderItem={(section) => (
+                <img src={section.image.src} className={css.image}/>
               )}
             />
           )}
@@ -118,24 +114,4 @@ export class SortsScreen extends React.Component<Props, State> {
       </>
     )
   }
-}
-
-const Item = (props: {images: ImageDataType[], isActive: boolean}) => {
-  const {images, isActive} = props;
-  const [index, setIndex] = useState(1);
-
-  const handleNext = () => setIndex(nextRotationIndex(index, images.length));
-  const handlePrev = () => setIndex(prevRotationIndex(index, images.length));
-
-  return (
-    <Carousel
-      horizontal
-      items={images}
-      currentItemIndex={index}
-      notActiveScale={isActive ? 0.9 : 1}
-      renderItem={(image) => <img src={image.src} className={css.image}/>}
-      onNext={handleNext}
-      onPrev={handlePrev}
-    />
-  )
 }
