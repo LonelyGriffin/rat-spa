@@ -4,6 +4,7 @@ import {NavHandler} from "../../nav_handler";
 type Props = {
   onNext: () => void
   onPrev: () => void
+  fromNextScreen: boolean
 }
 
 export const CommonScreen = (props: Props) => {

@@ -58,6 +58,7 @@ export const App = () => {
   const [screenIndex, setScreenIndex] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [percent, setPercent] = useState(100);
+  const [fromNextScreen, setFromNextScreen] = useState(false);
   const CurrentScreenComponent = SCREENS[screenIndex] ? SCREENS[screenIndex].component : Noop;
 
 
@@ -87,6 +88,7 @@ export const App = () => {
 
   const setScreenByKey = (key: string) => {
     const index = keyToIndex(key);
+    setFromNextScreen(false);
     setScreenIndex(index);
   };
 
@@ -119,8 +121,9 @@ export const App = () => {
         }}
       />
       <CurrentScreenComponent
-        onNext={() => {setScreenIndex(screenIndex < SCREENS.length - 1 ? screenIndex + 1 : 0)}}
-        onPrev={() => {setScreenIndex(screenIndex > 0 ? screenIndex - 1 : SCREENS.length - 1)}}
+        onNext={() => {setFromNextScreen(false); setScreenIndex(screenIndex < SCREENS.length - 1 ? screenIndex + 1 : 0);}}
+        onPrev={() => {setFromNextScreen(true); setScreenIndex(screenIndex > 0 ? screenIndex - 1 : SCREENS.length - 1)}}
+        fromNextScreen={fromNextScreen}
       />
     </>
   )

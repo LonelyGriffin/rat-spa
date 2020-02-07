@@ -11,6 +11,7 @@ import {NavHandler} from "../../nav_handler";
 type Props = {
   onNext: () => void
   onPrev: () => void
+  fromNextScreen: boolean
 }
 
 
@@ -24,8 +25,8 @@ export class SortsScreen extends React.Component<Props, State> {
     super(props)
 
     this.state = {
-      slideIndex: 0,
-      sectionIndex: 0
+      slideIndex: props.fromNextScreen ? SLIDES.length - 1 : 0,
+      sectionIndex: props.fromNextScreen ? SLIDES[SLIDES.length - 1].sections.length - 1 : 0
     }
   }
 

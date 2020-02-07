@@ -5,6 +5,7 @@ import css from './index.module.css';
 type Props = {
   onNext: () => void
   onPrev: () => void
+  fromNextScreen: boolean
 }
 
 export const LifeScreen = (props: Props) => {
