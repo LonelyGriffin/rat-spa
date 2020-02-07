@@ -1,28 +1,9 @@
 import {ImageDataType} from "../../../../types/image_data";
-import img1 from './rat_1.jpg';
-import img2 from './rat_2.jpg';
-import img3 from './rat_3.jpg';
-import img4 from './rat_4.jpg';
-import img5 from './rat_5.jpg';
-import img6 from './rat_6.jpg';
-import img7 from './rat_7.jpg';
-import img8 from './rat_8.jpg';
-import img9 from './rat_9.jpg';
-import img10 from './rat_10.jpg';
-import img11 from './rat_11.jpg';
-import img12 from './rat_12.jpg';
-import img13 from './rat_13.jpg';
-import img14 from './rat_14.jpg';
-import img17 from './rat_17.jpg';
-import img18 from './rat_18.jpg';
-import img19 from './rat_19.jpg';
-import img20 from './rat_20.jpg';
-import img22 from './rat_22.jpg';
-import img23 from './rat_23.jpg';
-import img24 from './rat_24.jpg';
+import mockImgSrc from "./mock.jpg"
 
 
 export type SectionType = {
+  subtitle?: string
   text: string
   images: ImageDataType[]
 }
@@ -37,158 +18,85 @@ export const SLIDES: SlideType[] = [
     title: 'Телосложение',
     sections: [
       {
-        text: 'Стандартный тип является основой для всех остальных типов телосложения. Крысы должны иметь пропорциональное телосложение. Они должны быть стройными, пластичными, но при этом не выглядеть излишне хрупкими. Самки обычно энергичнее самцов и кажутся более стройными. Длина тела обычно колеблется от 20 до 25 сантиметров от носа до основания хвоста. Самцы крупнее самок.',
-        images: [
-          {
-            src: img1,
-            alt: 'alt'
-          },
-          {
-            src: img2,
-            alt: 'alt'
-          },
-          {
-            src: img3,
-            alt: 'alt'
-          },
-          {
-            src: img4,
-            alt: 'alt'
-          }
-        ]
+        subtitle: 'Стандарт',
+        text: 'Основа для других типов телосложения, крыса  наиболее близкая по внешним признакам к своим диким сородичам. Взрослые самцы обычно менее энергичные, и немного полнее. Самки более стройные и эмоциональные. В длину от основания хвоста до кончика носа 20 - 25 сантиметров. Весят примерно 300 - 400 грамм и имеют прямую и плотную шерсть.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
-        text: 'Rutrum quisque non tellus orci ac. Tempus egestas sed sed risus pretium quam vulputate. Volutpat est velit egestas dui. Diam quam nulla porttitor massa. Blandit massa enim nec dui nunc mattis enim ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Sollicitudin ac orci phasellus egestas. Sodales ut eu sem integer. Arcu odio ut sem nulla pharetra diam sit amet. Neque egestas congue quisque egestas diam. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Molestie at elementum eu facilisis sed odio.',
-        images: [
-          {
-            src: img5,
-            alt: 'alt'
-          },
-          {
-            src: img6,
-            alt: 'alt'
-          },
-          {
-            src: img23,
-            alt: 'alt'
-          }
-        ]
+        subtitle: 'Дамбо',
+        text: 'Как следует из названия эта порода крыс названа в честь героя мультика «Дамбо». От стандартных их отличают грушевидное тело, более широкая голова с выступающим затылком, заостренная мордочка. Добавить большие ушки и получится слоненок. Поэтому ценность каждого экземпляра часто зависит от их размера - чем больше ушки тем дороже.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
-        text: 'Adipiscing bibendum est ultricies integer. Pulvinar neque laoreet suspendisse interdum. Aenean vel elit scelerisque mauris pellentesque. At imperdiet dui accumsan sit. Tellus elementum sagittis vitae et leo. Metus vulputate eu scelerisque felis imperdiet proin. Id interdum velit laoreet id donec ultrices tincidunt arcu. Massa tempor nec feugiat nisl pretium. Faucibus ornare suspendisse sed nisi lacus sed. A iaculis at erat pellentesque. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.',
-        images: [
-          {
-            src: img22,
-            alt: 'alt'
-          },
-          {
-            src: img7,
-            alt: 'alt'
-          },
-          {
-            src: img5,
-            alt: 'alt'
-          },
-        ]
-      },
-      {
-        text: 'Стандартный тип является основой для всех остальных типов телосложения. Крысы должны иметь пропорциональное телосложение. Они должны быть стройными, пластичными, но при этом не выглядеть излишне хрупкими. Самки обычно энергичнее самцов и кажутся более стройными. Длина тела обычно колеблется от 20 до 25 сантиметров от носа до основания хвоста. Самцы крупнее самок.',
-        images: [
-          {
-            src: img8,
-            alt: 'alt'
-          },
-          {
-            src: img17,
-            alt: 'alt'
-          },
-          {
-            src: img18,
-            alt: 'alt'
-          }
-        ]
+        subtitle: 'Манкс',
+        text: 'У многих крысиный хвост вызывает отвращение. Манкс специально выведенная порода без хвоста. Если вы относитесь к ним то вам стоит присмотреться к этому типу. Но нужно быть осторожным - при покупке можно получит не настоящего манкса, а стандартную купированную крысу. К сожалению хвост для крыс это естественный балансир и терморегулятор. В результате чего все манксы по определению инвалиды - у них страдает выделительная системма, опорнодвигательный апарат. Многие любители крыс против их разведения.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       }
     ]
   },
   {
     title: 'Тип шерсти',
-    sections: [{
-      text: 'Rutrum quisque non tellus orci ac. Tempus egestas sed sed risus pretium quam vulputate. Volutpat est velit egestas dui. Diam quam nulla porttitor massa. Blandit massa enim nec dui nunc mattis enim ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Sollicitudin ac orci phasellus egestas. Sodales ut eu sem integer. Arcu odio ut sem nulla pharetra diam sit amet. Neque egestas congue quisque egestas diam. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Molestie at elementum eu facilisis sed odio.',
-      images: [
-        {
-          src: img9,
-          alt: 'alt'
-        },
-        {
-          src: img10,
-          alt: 'alt'
-        },
-        {
-          src: img11,
-          alt: 'alt'
-        }
-      ]
-    }]
+    sections: [
+      {
+        subtitle: 'Стандартные',
+        text: 'У обычных крысок шерсть плотная, гладкая, мягкая приятная на ощупь. Примерно равной длины по всему телу.  Усы длинные, кошачьи. Идут рядами вдоль розового носика. Лапы, хвостик и ушки покрыты легким подшерстком. Подсвечивающим нежную, чистую кожу.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Сфинксы',
+        text: 'Порода выведена по аналогии с кошачьей. Они полностью лысые за исключением некоторых участков - мордочка, лапки, низ живота. В этих областях может быть легкий пушок. Кожа розовая, яркая, мягкая. Местами проявляются складки. Усы короткие, вьющиеся.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Пуховые',
+        text: 'У этой породы отсутствует остевой волос - внешний слой длинных, плотных волос. Оставлен только подшерсток - короткий, мягкий, бархатный. На мордочке и нижней части тела длинней и плотнее. Усики короткие, немного закрученные вниз.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Сатиновые',
+        text: 'Сатиновые или атласные -это порода длиношерстных крыс. Их волосы несколько длиннее чем у обычных. Прямые, шелковистые. Еще одной характерной чертой является ее блеск - создается впечатление что зверек сияет.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Рексы',
+        text: 'Это разновидность кудрявых крысок. Верхний слой шерсти практически отсутствует, вместо него закручивающийся кудряшками подшерсток. У них волос плотный и густой, более матовый чем у стандартных. На ощупь грубоват, но не жесткий. Усики короткие и закрученные.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      }
+    ]
   },
   {
     title: 'Окрас',
     sections: [
       {
-        text: 'Adipiscing bibendum est ultricies integer. Pulvinar neque laoreet suspendisse interdum. Aenean vel elit scelerisque mauris pellentesque. At imperdiet dui accumsan sit. Tellus elementum sagittis vitae et leo. Metus vulputate eu scelerisque felis imperdiet proin. Id interdum velit laoreet id donec ultrices tincidunt arcu. Massa tempor nec feugiat nisl pretium. Faucibus ornare suspendisse sed nisi lacus sed. A iaculis at erat pellentesque. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.',
-        images: [
-          {
-            src: img12,
-            alt: 'alt'
-          },
-          {
-            src: img13,
-            alt: 'alt'
-          },
-          {
-            src: img14,
-            alt: 'alt'
-          }
-        ]
-      },
-    ]
-  },
-  {
-    title: 'Разновидность',
-    sections: [
-      {
-        text: 'Adipiscing bibendum est ultricies integer. Pulvinar neque laoreet suspendisse interdum. Aenean vel elit scelerisque mauris pellentesque. At imperdiet dui accumsan sit. Tellus elementum sagittis vitae et leo. Metus vulputate eu scelerisque felis imperdiet proin. Id interdum velit laoreet id donec ultrices tincidunt arcu. Massa tempor nec feugiat nisl pretium. Faucibus ornare suspendisse sed nisi lacus sed. A iaculis at erat pellentesque. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.',
-        images: [
-          {
-            src: img17,
-            alt: 'alt'
-          },
-          {
-            src: img18,
-            alt: 'alt'
-          },
-          {
-            src: img5,
-            alt: 'alt'
-          }
-        ]
+        subtitle: 'Однородные',
+        text: 'При этом окрасе волосы имеют один тот же цвет, блеск и тон по всей длине. ',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
-        text: 'Nibh tortor id aliquet lectus proin nibh nisl condimentum. Neque laoreet suspendisse interdum consectetur libero id. Ut eu sem integer vitae justo eget magna fermentum iaculis. Nulla pellentesque dignissim enim sit amet. Odio tempor orci dapibus ultrices in iaculis nunc. Dui id ornare arcu odio ut sem nulla pharetra. Mauris nunc congue nisi vitae. Sed vulputate mi sit amet mauris commodo. Ut tellus elementum sagittis vitae et leo duis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.',
-        images: [
-          {
-            src: img19,
-            alt: 'alt'
-          },
-          {
-            src: img20,
-            alt: 'alt'
-          },
-          {
-            src: img24,
-            alt: 'alt'
-          }
-        ]
+        subtitle: 'Тикированные',
+        text: 'Тикированые волосы имеют разный цвет на разных  участках волоска. Допускается равномерное вкрапление однотонных волосков. тикированный окрас агути - это самый естественный и природный окрас у крыс.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
+      {
+        subtitle: 'Серебристые',
+        text: 'Серебристый окрас это дополнительный признак к другим видам окраса. Характерной чертой является сильное вкрапление серебристых волосков и волосков другого окраса. Например чередование с однородными. Серебритые волоски должны быть максимально белыми, без вкраплений, за исключением кончика. Так же серебристыми считаются когда количество белых и других волосков примерно поровну. При небольших вкраплениях или при практически полностью серебряными волосками нельзя назвать окрас серебристым.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Комбинированные',
+        text: 'Как следует из названия этот окрас является комбинацией двух и более цветов распределенных по телу. За исключением белого цвета.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Маркированные',
+        text: 'Макированный окрас это комбинированный, но имеющий на теле участки белого цвета. Название произошло от термина маркировка - рисунок имеющий белый и цветные участки.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      },
+      {
+        subtitle: 'Альбиносы',
+        text: 'Альбиносы это яркий, кристально чистый белый окрас. Без вкраплений на протяжении всего волоска. Глаза красные, розовые. Из за специфической мутации глаз, альбиносы обычно имеют слабое зрение. Но для крысок это не критично - зрение не является их основным органом чувств.',
+        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+      }
     ]
   }
 ];

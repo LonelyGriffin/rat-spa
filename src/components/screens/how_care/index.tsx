@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {NavigationPanel} from "../../navigation_panel";
 import {TwoColumnLayout} from "../../layout/two_column_layout";
 import {SectionType, SLIDES} from "./resources";
 import {Carousel} from "../../carousel";
 import css from './index.module.css';
-import {nextRotationIndex, prevRotationIndex} from "../../../lib/rotate_index";
-import {ImageDataType} from "../../../types/image_data";
 import {NavHandler} from "../../nav_handler";
 
 type Props = {
@@ -13,13 +11,12 @@ type Props = {
   onPrev: () => void
 }
 
-
 type State = {
   slideIndex: number,
   sectionIndex: number
 }
 
-export class SortsScreen extends React.Component<Props, State> {
+export class HowCareScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
@@ -90,7 +87,7 @@ export class SortsScreen extends React.Component<Props, State> {
       <>
         <NavHandler onNext={this.handleNextCarouselItem} onPrev={this.handlePrevCarouselItem}/>
         <TwoColumnLayout
-          title={'Породы'}
+          title={'Как ухаживать'}
           key={'layout'}
           renderHeader={() => <NavigationPanel
             items={SLIDES}
@@ -106,11 +103,8 @@ export class SortsScreen extends React.Component<Props, State> {
               onPrev={this.handlePrevCarouselItem}
               onNext={this.handleNextCarouselItem}
               notActiveScale={0.8}
-              renderItem={(section, isActive) => (
-                <Item
-                  images={section.images}
-                  isActive={isActive}
-                />
+              renderItem={(section) => (
+                <img src={section.image.src} className={css.image}/>
               )}
             />
           )}
@@ -119,24 +113,4 @@ export class SortsScreen extends React.Component<Props, State> {
       </>
     )
   }
-}
-
-const Item = (props: {images: ImageDataType[], isActive: boolean}) => {
-  const {images, isActive} = props;
-  const [index, setIndex] = useState(1);
-
-  const handleNext = () => setIndex(nextRotationIndex(index, images.length));
-  const handlePrev = () => setIndex(prevRotationIndex(index, images.length));
-
-  return (
-    <Carousel
-      horizontal
-      items={images}
-      currentItemIndex={index}
-      notActiveScale={isActive ? 0.9 : 1}
-      renderItem={(image) => <img src={image.src} className={css.image}/>}
-      onNext={handleNext}
-      onPrev={handlePrev}
-    />
-  )
 }

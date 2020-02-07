@@ -5,6 +5,7 @@ import {CircledDivider} from "./circled_divider";
 import {BottomShadow} from "./bottom_shadow";
 
 type Props = {
+  title: string
   renderHeader?: () => React.ReactNode
   renderBg?: () => React.ReactNode
   renderLeft?: () => React.ReactNode
@@ -17,7 +18,7 @@ export const TwoColumnLayout = (props: Props) => {
   return (
     <div className={css.root}>
       <Header>
-        <h1 className={css.title}>Породы</h1>
+        <h1 className={css.title}>{props.title}</h1>
         {renderHeader && renderHeader()}
       </Header>
       <main className={css.main}>

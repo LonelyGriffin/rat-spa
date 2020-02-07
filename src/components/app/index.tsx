@@ -13,13 +13,15 @@ import cn from "classnames";
 import {HowChooseScreen} from "../screens/how_choose";
 import {Loader} from "../loader";
 import {LifeScreen} from "../screens/life";
+import {HowCareScreen} from "../screens/how_care";
+import {CommonScreen} from "../screens/common";
 
 const SCREENS = [
   {
     index: 0,
     title: 'Общая информация',
     icon: mainIconSrc,
-    component: HowChooseScreen
+    component: CommonScreen
   },
   {
     index: 1,
@@ -37,7 +39,7 @@ const SCREENS = [
     index: 3,
     title: 'Как ухаживать',
     icon: howCareSrc,
-    component: SortsScreen
+    component: HowCareScreen
   },
   {
     index: 4,
@@ -117,8 +119,8 @@ export const App = () => {
         }}
       />
       <CurrentScreenComponent
-        onNext={() => {setScreenIndex(screenIndex + 1)}}
-        onPrev={() => {setScreenIndex(screenIndex - 1)}}
+        onNext={() => {setScreenIndex(screenIndex < SCREENS.length - 1 ? screenIndex + 1 : 0)}}
+        onPrev={() => {setScreenIndex(screenIndex > 0 ? screenIndex - 1 : SCREENS.length - 1)}}
       />
     </>
   )

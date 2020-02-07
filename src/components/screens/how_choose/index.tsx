@@ -89,6 +89,7 @@ export class HowChooseScreen extends React.Component<Props, State> {
       <>
         <NavHandler onNext={this.handleNextCarouselItem} onPrev={this.handlePrevCarouselItem}/>
         <TwoColumnLayout
+          title={'Как выбрать'}
           key={'layout'}
           renderHeader={() => <NavigationPanel
             items={SLIDES}

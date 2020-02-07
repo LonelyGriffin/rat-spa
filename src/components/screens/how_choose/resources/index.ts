@@ -1,28 +1,9 @@
 import {ImageDataType} from "../../../../types/image_data";
-import img1 from './rat_1.jpg';
-import img2 from './rat_2.jpg';
-import img3 from './rat_3.jpg';
-import img4 from './rat_4.jpg';
-import img5 from './rat_5.jpg';
-import img6 from './rat_6.jpg';
-import img7 from './rat_7.jpg';
-import img8 from './rat_8.jpg';
-import img9 from './rat_9.jpg';
-import img10 from './rat_10.jpg';
-import img11 from './rat_11.jpg';
-import img12 from './rat_12.jpg';
-import img13 from './rat_13.jpg';
-import img14 from './rat_14.jpg';
-import img17 from './rat_17.jpg';
-import img18 from './rat_18.jpg';
-import img19 from './rat_19.jpg';
-import img20 from './rat_20.jpg';
-import img22 from './rat_22.jpg';
-import img23 from './rat_23.jpg';
-import img24 from './rat_24.jpg';
+import mockImgSrc from "./mock.jpg";
 
 
 export type SectionType = {
+  subtitle?: string
   text: string
   image: ImageDataType
 }
@@ -34,53 +15,39 @@ export type SlideType = {
 
 export const SLIDES: SlideType[] = [
   {
-    title: 'Общее',
+    title: 'Место',
     sections: [
       {
-        text: 'Стандартный тип является основой для всех остальных типов телосложения. Крысы должны иметь пропорциональное телосложение. Они должны быть стройными, пластичными, но при этом не выглядеть излишне хрупкими. Самки обычно энергичнее самцов и кажутся более стройными. Длина тела обычно колеблется от 20 до 25 сантиметров от носа до основания хвоста. Самцы крупнее самок.',
-        image: { src: img1, alt: 'alt' }
-      },
+        text: 'Покупать хвостатых обязательно нужно в проверенных местах, в зоомагазинах или у заводчика, которые могут предоставить все документы и справки на животного. При выборе первое на что нужно обратить это место обитание крысок. Оно должно быть чистым и просторным.',
+        image: { src: mockImgSrc, alt: 'alt' }
+      }
+    ]
+  },
+  {
+    title: 'Внешний вид',
+    sections: [
       {
-        text: 'Rutrum quisque non tellus orci ac. Tempus egestas sed sed risus pretium quam vulputate. Volutpat est velit egestas dui. Diam quam nulla porttitor massa. Blandit massa enim nec dui nunc mattis enim ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Sollicitudin ac orci phasellus egestas. Sodales ut eu sem integer. Arcu odio ut sem nulla pharetra diam sit amet. Neque egestas congue quisque egestas diam. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Molestie at elementum eu facilisis sed odio.',
-        image: { src: img2, alt: 'alt' }
-      },
-      {
-        text: 'Adipiscing bibendum est ultricies integer. Pulvinar neque laoreet suspendisse interdum. Aenean vel elit scelerisque mauris pellentesque. At imperdiet dui accumsan sit. Tellus elementum sagittis vitae et leo. Metus vulputate eu scelerisque felis imperdiet proin. Id interdum velit laoreet id donec ultrices tincidunt arcu. Massa tempor nec feugiat nisl pretium. Faucibus ornare suspendisse sed nisi lacus sed. A iaculis at erat pellentesque. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.',
-        image: { src: img3, alt: 'alt' }
-      },
-      {
-        text: 'Стандартный тип является основой для всех остальных типов телосложения. Крысы должны иметь пропорциональное телосложение. Они должны быть стройными, пластичными, но при этом не выглядеть излишне хрупкими. Самки обычно энергичнее самцов и кажутся более стройными. Длина тела обычно колеблется от 20 до 25 сантиметров от носа до основания хвоста. Самцы крупнее самок.',
-        image: { src: img4, alt: 'alt' }
+        text: 'Вот на что стоит обратить внимание при осмотре крыски - мех должен быть чистым, без механических повреждений, на слизистой не должно быть никаких выделений,  анальное отверстие должно быть сухим и чистым, дыхание ровным. Не покупайте слишком сонных или перевозбужденных особей. Если одна из крысок выглядит больной то лучше отказаться от всех в клетке. ',
+        image: { src: mockImgSrc, alt: 'alt' }
       }
     ]
   },
   {
     title: 'Пол',
-    sections: [{
-      text: 'Rutrum quisque non tellus orci ac. Tempus egestas sed sed risus pretium quam vulputate. Volutpat est velit egestas dui. Diam quam nulla porttitor massa. Blandit massa enim nec dui nunc mattis enim ut. Scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt. Sed adipiscing diam donec adipiscing tristique risus nec feugiat. Sollicitudin ac orci phasellus egestas. Sodales ut eu sem integer. Arcu odio ut sem nulla pharetra diam sit amet. Neque egestas congue quisque egestas diam. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Molestie at elementum eu facilisis sed odio.',
-      image: { src: img5, alt: 'alt' }
-    }]
-  },
-  {
-    title: 'Здоровье',
     sections: [
       {
-        text: 'Adipiscing bibendum est ultricies integer. Pulvinar neque laoreet suspendisse interdum. Aenean vel elit scelerisque mauris pellentesque. At imperdiet dui accumsan sit. Tellus elementum sagittis vitae et leo. Metus vulputate eu scelerisque felis imperdiet proin. Id interdum velit laoreet id donec ultrices tincidunt arcu. Massa tempor nec feugiat nisl pretium. Faucibus ornare suspendisse sed nisi lacus sed. A iaculis at erat pellentesque. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.',
-        image: { src: img6, alt: 'alt' }
-      },
+        text: 'По характеру самцы более спокойные. Самки более любопытные и активные. При этом самцы в детстве обычно растут медленней самок, но в конечном счете становятся крупнее. Шерсть у них более жирная и жестка. ',
+        image: { src: mockImgSrc, alt: 'alt' }
+      }
     ]
   },
   {
-    title: 'Место',
+    title: 'Сколько',
     sections: [
       {
-        text: 'Adipiscing bibendum est ultricies integer. Pulvinar neque laoreet suspendisse interdum. Aenean vel elit scelerisque mauris pellentesque. At imperdiet dui accumsan sit. Tellus elementum sagittis vitae et leo. Metus vulputate eu scelerisque felis imperdiet proin. Id interdum velit laoreet id donec ultrices tincidunt arcu. Massa tempor nec feugiat nisl pretium. Faucibus ornare suspendisse sed nisi lacus sed. A iaculis at erat pellentesque. Etiam dignissim diam quis enim lobortis scelerisque fermentum dui.',
-        image: { src: img7, alt: 'alt' }
-      },
-      {
-        text: 'Nibh tortor id aliquet lectus proin nibh nisl condimentum. Neque laoreet suspendisse interdum consectetur libero id. Ut eu sem integer vitae justo eget magna fermentum iaculis. Nulla pellentesque dignissim enim sit amet. Odio tempor orci dapibus ultrices in iaculis nunc. Dui id ornare arcu odio ut sem nulla pharetra. Mauris nunc congue nisi vitae. Sed vulputate mi sit amet mauris commodo. Ut tellus elementum sagittis vitae et leo duis. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.',
-        image: { src: img8, alt: 'alt' }
-      },
+        text: 'Для начала лучше брать две однополые особи. Крыски социальные животные, поэтому одному в клетке будет очень скучно. Также хвостатые в очень раннем - уже в два месяца могут забеременеть. Поэтому нужно брать одно полые особи или сразу же кастрировать мальчика. ',
+        image: { src: mockImgSrc, alt: 'alt' }
+      }
     ]
   }
 ];
