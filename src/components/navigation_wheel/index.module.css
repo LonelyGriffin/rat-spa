@@ -78,6 +78,7 @@
     height: 100%;
     width: 0;
     background-color: #222325;
+    box-shadow: 30px 30px 30px 30px  #222325;
     opacity: 0.8;
     transition: width 0.5s cubic-bezier(0.185, 0.415, 0.190, 0.945);
     border-top-right-radius: 30%;
