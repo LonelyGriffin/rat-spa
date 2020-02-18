@@ -55,7 +55,7 @@ const indexToKey = (index: number) => index >= 0 ? `${index}` : '0';
 let p = 100
 
 export const App = () => {
-  const [screenIndex, setScreenIndex] = useState(1);
+  const [screenIndex, setScreenIndex] = useState(4);
   const [isLoading, setIsLoading] = useState(true);
   const [percent, setPercent] = useState(100);
   const [fromNextScreen, setFromNextScreen] = useState(false);

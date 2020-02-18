@@ -8,6 +8,7 @@
     align-items: center;
     z-index: 100000;
     margin-top: 130px;
+    font-size: 28px;
 }
 .container {
     height: 100%;
@@ -16,7 +17,6 @@
     align-items: center;
 }
 .body {
-    /*background-color: rgba(222, 222, 222, 0.05);*/
     position: relative;
     z-index: 100000;
 }

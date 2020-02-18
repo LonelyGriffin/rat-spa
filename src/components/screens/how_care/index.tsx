@@ -77,6 +77,7 @@ export class HowCareScreen extends React.Component<Props, State> {
     const {slideIndex, sectionIndex} = this.state
 
     const text = SLIDES[slideIndex].sections[sectionIndex].text;
+    const subtitle = SLIDES[slideIndex].sections[sectionIndex].subtitle
     const flatSections = SLIDES.reduce<SectionType[]>(
         (result, slide) =>  result.concat(slide.sections),
       []);
@@ -109,7 +110,12 @@ export class HowCareScreen extends React.Component<Props, State> {
               )}
             />
           )}
-          renderRight={() => <p className={css.text}>{text}</p>}
+          renderRight={() => (
+            <>
+              <h3>{subtitle}</h3>
+              <p className={css.text}>{text}</p>
+            </>
+          )}
         />
       </>
     )

@@ -37,16 +37,22 @@ html, body, #root {
   padding: 0;
   color: #F4EBD0;
   font-family: RatHelvetica, "Helvetica Neue", Helvetica, Arial, serif;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 120%;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: RatHelveticaRounded, RatHelvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: bold;
+  line-height: 200%;
+  margin: 0;
 }
 
 h1 {
   font-size: 62px;
   line-height: 118px;
+}
+
+p {
+  margin: 0;
 }
