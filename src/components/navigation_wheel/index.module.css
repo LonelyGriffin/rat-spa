@@ -31,8 +31,8 @@
 }
 
 .bands {
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     position: absolute;
 }
 
@@ -73,7 +73,7 @@
 
 .overlay {
     left: 0;
-    top: 130px;
+    top: 0;
     position: fixed;
     height: 100%;
     width: 0;
@@ -81,7 +81,7 @@
     box-shadow: 30px 30px 30px 30px  #222325;
     opacity: 0.8;
     transition: width 0.5s cubic-bezier(0.185, 0.415, 0.190, 0.945);
-    border-top-right-radius: 30%;
+    border-top-right-radius: 40%;
     border-bottom-right-radius: 30%;
 }
 
