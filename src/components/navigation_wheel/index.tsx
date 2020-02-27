@@ -209,8 +209,9 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
 
                     const minBandWidth = isHovered ? MIN_BAND_WIDTH_ON_HOVER : MIN_BAND_WIDTH
                     const maxBandWidth = isHovered ? MAX_BAND_WIDTH_ON_HOVER : MAX_BAND_WIDTH
+                    const visibleWheelWidth = isHovered ? MAX_VISIBLE_WHEEL_WIDTH : MIN_VISIBLE_WHEEL_WIDTH;
 
-                    updateBands(MAX_VISIBLE_WHEEL_WIDTH, waveCenterYRef.current, minBandWidth, maxBandWidth, relativeShift);
+                    updateBands(visibleWheelWidth, waveCenterYRef.current, minBandWidth, maxBandWidth, relativeShift);
                 }
             });
         } else {
