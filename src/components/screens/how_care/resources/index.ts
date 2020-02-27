@@ -3,7 +3,7 @@ import mockImgSrc from "./mock.jpg";
 
 
 export type SectionType = {
-  subtitle?: string
+  subtitle: string
   text: string
   image: ImageDataType
 }

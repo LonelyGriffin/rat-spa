@@ -7,6 +7,7 @@ import css from './index.module.css';
 import {nextRotationIndex, prevRotationIndex} from "../../../lib/rotate_index";
 import {ImageDataType} from "../../../types/image_data";
 import {NavHandler} from "../../nav_handler";
+import {LayoutRightTextBlock} from "../../layout/right_text_block";
 
 type Props = {
   onNext: () => void
@@ -112,12 +113,7 @@ export class HowChooseScreen extends React.Component<Props, State> {
               )}
             />
           )}
-          renderRight={() => (
-            <>
-              <h3>{subtitle}</h3>
-              <p className={css.text}>{text}</p>
-            </>
-          )}
+          renderRight={() => <LayoutRightTextBlock title={subtitle} text={text} />}
         />
       </>
     )

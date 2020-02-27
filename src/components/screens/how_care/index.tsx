@@ -5,6 +5,8 @@ import {SectionType, SLIDES} from "./resources";
 import {Carousel} from "../../carousel";
 import css from './index.module.css';
 import {NavHandler} from "../../nav_handler";
+import cn from "classnames"
+import {LayoutRightTextBlock} from "../../layout/right_text_block";
 
 type Props = {
   onNext: () => void
@@ -110,12 +112,7 @@ export class HowCareScreen extends React.Component<Props, State> {
               )}
             />
           )}
-          renderRight={() => (
-            <>
-              <h3>{subtitle}</h3>
-              <p className={css.text}>{text}</p>
-            </>
-          )}
+          renderRight={() => <LayoutRightTextBlock title={subtitle} text={text} />}
         />
       </>
     )
