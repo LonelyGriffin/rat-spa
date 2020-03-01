@@ -1,18 +1,18 @@
 import React from 'react';
-import {NavHandler} from "../../nav_handler";
 import css from './index.module.css';
 import cn from 'classnames';
+import {NavHandler} from "../../components/nav_handler";
 
 type Props = {
-  onNext: () => void
-  onPrev: () => void
+  onNextPage: () => void
+  onPrevPage: () => void
   fromNextScreen: boolean
 }
 
 export const LifeScreen = (props: Props) => {
   return (
     <>
-      <NavHandler onNext={props.onNext} onPrev={props.onPrev}/>
+      <NavHandler onNext={props.onNextPage} onPrev={props.onPrevPage}/>
       <div className={css.root}>
         <h1 className={css.title}>Продление жизни</h1>
         <div className={css.content}>

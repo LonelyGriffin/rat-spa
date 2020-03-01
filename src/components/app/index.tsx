@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {NavigationWheel} from "../navigation_wheel";
 import {Noop} from "../noop";
-import {SortsScreen} from "../screens/sorts";
 import css from "./index.module.css";
 
 import mainIconSrc from "./icons/main.svg";
@@ -10,11 +9,12 @@ import howFindSrc from "./icons/how_find.svg";
 import lifeSrc from "./icons/life.svg";
 import sortsSrc from "./icons/sorts.svg";
 import cn from "classnames";
-import {HowChooseScreen} from "../screens/how_choose";
 import {Loader} from "../loader";
-import {LifeScreen} from "../screens/life";
-import {HowCareScreen} from "../screens/how_care";
-import {CommonScreen} from "../screens/common";
+import {CommonScreen} from "../../screens/common";
+import {SortsScreen} from "../../screens/sorts";
+import {HowCareScreen} from "../../screens/how_care";
+import {LifeScreen} from "../../screens/life";
+import {HowChooseScreen} from "../../screens/how_choose";
 
 const SCREENS = [
   {
@@ -121,8 +121,8 @@ export const App = () => {
         }}
       />
       <CurrentScreenComponent
-        onNext={() => {setFromNextScreen(false); setScreenIndex(screenIndex < SCREENS.length - 1 ? screenIndex + 1 : 0);}}
-        onPrev={() => {setFromNextScreen(true); setScreenIndex(screenIndex > 0 ? screenIndex - 1 : SCREENS.length - 1)}}
+        onNextPage={() => {setFromNextScreen(false); setScreenIndex(screenIndex < SCREENS.length - 1 ? screenIndex + 1 : 0);}}
+        onPrevPage={() => {setFromNextScreen(true); setScreenIndex(screenIndex > 0 ? screenIndex - 1 : SCREENS.length - 1)}}
         fromNextScreen={fromNextScreen}
       />
     </>

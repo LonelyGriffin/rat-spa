@@ -1,36 +1,26 @@
-import {ImageDataType} from "../../../../types/image_data";
 import mockImgSrc from "./mock.jpg"
+import {SlideType} from "../../../components/slided_page";
+import {ImageDataType} from "../../../types/image_data";
 
 
-export type SectionType = {
-  subtitle: string
-  text: string
-  images: ImageDataType[]
-}
-
-export type SlideType = {
-  title: string,
-  sections: SectionType[]
-}
-
-export const SLIDES: SlideType[] = [
+export const SLIDES: SlideType<ImageDataType[]>[] = [
   {
     title: 'Телосложение',
     sections: [
       {
         subtitle: 'Стандарт',
         text: 'Основа для других типов телосложения, крыса  наиболее близкая по внешним признакам к своим диким сородичам. Взрослые самцы обычно менее энергичные, и немного полнее. Самки более стройные и эмоциональные. В длину от основания хвоста до кончика носа 20 - 25 сантиметров. Весят примерно 300 - 400 грамм и имеют прямую и плотную шерсть.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Дамбо',
         text: 'Как следует из названия эта порода крыс названа в честь героя мультика «Дамбо». От стандартных их отличают грушевидное тело, более широкая голова с выступающим затылком, заостренная мордочка. Добавить большие ушки и получится слоненок. Поэтому ценность каждого экземпляра часто зависит от их размера - чем больше ушки тем дороже.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Манкс',
         text: 'У многих крысиный хвост вызывает отвращение. Манкс специально выведенная порода без хвоста. Если вы относитесь к ним то вам стоит присмотреться к этому типу. Но нужно быть осторожным - при покупке можно получит не настоящего манкса, а стандартную купированную крысу. К сожалению хвост для крыс это естественный балансир и терморегулятор. В результате чего все манксы по определению инвалиды - у них страдает выделительная системма, опорнодвигательный апарат. Многие любители крыс против их разведения.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       }
     ]
   },
@@ -40,27 +30,27 @@ export const SLIDES: SlideType[] = [
       {
         subtitle: 'Стандартные',
         text: 'У обычных крысок шерсть плотная, гладкая, мягкая приятная на ощупь. Примерно равной длины по всему телу.  Усы длинные, кошачьи. Идут рядами вдоль розового носика. Лапы, хвостик и ушки покрыты легким подшерстком. Подсвечивающим нежную, чистую кожу.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Сфинксы',
         text: 'Порода выведена по аналогии с кошачьей. Они полностью лысые за исключением некоторых участков - мордочка, лапки, низ живота. В этих областях может быть легкий пушок. Кожа розовая, яркая, мягкая. Местами проявляются складки. Усы короткие, вьющиеся.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Пуховые',
         text: 'У этой породы отсутствует остевой волос - внешний слой длинных, плотных волос. Оставлен только подшерсток - короткий, мягкий, бархатный. На мордочке и нижней части тела длинней и плотнее. Усики короткие, немного закрученные вниз.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Сатиновые',
         text: 'Сатиновые или атласные -это порода длиношерстных крыс. Их волосы несколько длиннее чем у обычных. Прямые, шелковистые. Еще одной характерной чертой является ее блеск - создается впечатление что зверек сияет.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Рексы',
         text: 'Это разновидность кудрявых крысок. Верхний слой шерсти практически отсутствует, вместо него закручивающийся кудряшками подшерсток. У них волос плотный и густой, более матовый чем у стандартных. На ощупь грубоват, но не жесткий. Усики короткие и закрученные.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       }
     ]
   },
@@ -70,32 +60,32 @@ export const SLIDES: SlideType[] = [
       {
         subtitle: 'Однородные',
         text: 'При этом окрасе волосы имеют один тот же цвет, блеск и тон по всей длине. ',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Тикированные',
         text: 'Тикированые волосы имеют разный цвет на разных  участках волоска. Допускается равномерное вкрапление однотонных волосков. тикированный окрас агути - это самый естественный и природный окрас у крыс.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Серебристые',
         text: 'Серебристый окрас это дополнительный признак к другим видам окраса. Характерной чертой является сильное вкрапление серебристых волосков и волосков другого окраса. Например чередование с однородными. Серебритые волоски должны быть максимально белыми, без вкраплений, за исключением кончика. Так же серебристыми считаются когда количество белых и других волосков примерно поровну. При небольших вкраплениях или при практически полностью серебряными волосками нельзя назвать окрас серебристым.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Комбинированные',
         text: 'Как следует из названия этот окрас является комбинацией двух и более цветов распределенных по телу. За исключением белого цвета.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Маркированные',
         text: 'Макированный окрас это комбинированный, но имеющий на теле участки белого цвета. Название произошло от термина маркировка - рисунок имеющий белый и цветные участки.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       },
       {
         subtitle: 'Альбиносы',
         text: 'Альбиносы это яркий, кристально чистый белый окрас. Без вкраплений на протяжении всего волоска. Глаза красные, розовые. Из за специфической мутации глаз, альбиносы обычно имеют слабое зрение. Но для крысок это не критично - зрение не является их основным органом чувств.',
-        images: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
+        data: [{src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}, {src: mockImgSrc, alt: 'alt'}]
       }
     ]
   }
