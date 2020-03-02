@@ -1,19 +1,20 @@
 import React from 'react';
 import {SLIDES} from "./resources";
-import css from './index.module.css';
+const css = require('./index.module.css');
 import {SlidedPage} from "../../components/slided_page";
+import {NavContextConsumer} from "../../components/app/nav_context";
 
-type Props = {
-  onNextPage: () => void
-  onPrevPage: () => void
-  fromNextScreen: boolean
-}
-
-export const HowChooseScreen = (props: Props) => (
-  <SlidedPage
-    header={'Как ухаживать'}
-    slides={SLIDES}
-    renderSlide={data => <img src={data.src} className={css.image}/>}
-    {...props}
-  />
+export const HowChooseScreen = () => (
+  <NavContextConsumer>
+    {({onNextPage, onPrevPage, fromNextScreen}) => (
+      <SlidedPage
+        header={'Как ухаживать'}
+        slides={SLIDES}
+        renderSlide={data => <img src={data.src} className={css.image}/>}
+        fromNextScreen={fromNextScreen}
+        onPrevPage={onPrevPage}
+        onNextPage={onNextPage}
+      />
+    )}
+  </NavContextConsumer>
 );

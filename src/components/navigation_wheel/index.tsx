@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import css from "./index.module.css";
+const css = require("./index.module.css");
 import GSAP from "gsap";
 import cn from "classnames"
 

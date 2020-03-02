@@ -29,7 +29,7 @@
 }
 
 
-html, body, #root {
+html, body, #root, .__next {
   height: 100%;
   width: 100%;
   background-color: #222325;
@@ -56,3 +56,5 @@ h1 {
 p {
   margin: 0;
 }
+
+

@@ -4,7 +4,7 @@ import {Carousel} from "../carousel";
 import {NavigationPanel} from "../navigation_panel";
 import {TwoColumnLayout} from "../layout/two_column_layout";
 import {NavHandler} from "../nav_handler";
-import css from './index.module.css';
+const css = require('./index.module.css');
 
 export type SectionType<T> = {
   subtitle: string

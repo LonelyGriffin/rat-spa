@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './two_column_layout.module.css';
+const css = require('./two_column_layout.module.css');
 import {Header} from "./header";
 import {CircledDivider} from "./circled_divider";
 import {BottomShadow} from "./bottom_shadow";

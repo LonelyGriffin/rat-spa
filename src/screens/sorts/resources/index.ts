@@ -1,4 +1,4 @@
-import mockImgSrc from "./mock.jpg"
+const mockImgSrc =  '/images/mock.jpg';
 import {SlideType} from "../../../components/slided_page";
 import {ImageDataType} from "../../../types/image_data";
 

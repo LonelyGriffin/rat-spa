@@ -1,4 +1,4 @@
-import css from "./right_text_block.module.css";
+const css = require("./right_text_block.module.css");
 import cn from "classnames";
 import React from "react";
 

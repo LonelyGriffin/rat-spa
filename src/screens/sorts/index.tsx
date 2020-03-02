@@ -1,24 +1,25 @@
 import React, {useState} from 'react';
 import {SLIDES} from "./resources";
-import css from './index.module.css';
+const css = require('./index.module.css');
 import {SlidedPage} from "../../components/slided_page";
 import {Carousel} from "../../components/carousel";
 import {ImageDataType} from "../../types/image_data";
 import {nextRotationIndex, prevRotationIndex} from "../../lib/rotate_index";
+import {NavContextConsumer} from "../../components/app/nav_context";
 
-type Props = {
-  onNextPage: () => void
-  onPrevPage: () => void
-  fromNextScreen: boolean
-}
-
-export const SortsScreen = (props: Props) => (
-  <SlidedPage
-    header={'Виды'}
-    slides={SLIDES}
-    renderSlide={(data, isActive) => <Item images={data} isActive={isActive} />}
-    {...props}
-  />
+export const SortsScreen = () => (
+  <NavContextConsumer>
+    {({onNextPage, onPrevPage, fromNextScreen}) => (
+      <SlidedPage
+        header={'Виды'}
+        slides={SLIDES}
+        renderSlide={(data, isActive) => <Item images={data} isActive={isActive} />}
+        fromNextScreen={fromNextScreen}
+        onPrevPage={onPrevPage}
+        onNextPage={onNextPage}
+      />
+    )}
+  </NavContextConsumer>
 );
 
 

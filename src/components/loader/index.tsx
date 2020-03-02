@@ -1,5 +1,5 @@
 import React from 'react'
-import css from './index.module.css'
+const css = require('./index.module.css')
 import cn from 'classnames'
 
 type Props = {

@@ -1,19 +1,19 @@
 import React from 'react';
 import {NavHandler} from "../../components/nav_handler";
+import {NavContextConsumer} from "../../components/app/nav_context";
 
-type Props = {
-  onNextPage: () => void
-  onPrevPage: () => void
-  fromNextScreen: boolean
-}
 
-export const CommonScreen = (props: Props) => {
+export const CommonScreen = () => {
   return (
-    <>
-      <NavHandler onNext={props.onNextPage} onPrev={props.onPrevPage}/>
-      <div>
-        Общая информация
-      </div>
-    </>
+    <NavContextConsumer>
+      {({onNextPage, onPrevPage}) => (
+        <>
+          <NavHandler onNext={onNextPage} onPrev={onPrevPage}/>
+          <div>
+            Общая информация
+          </div>
+        </>
+      )}
+    </NavContextConsumer>
   )
-}
+};
