@@ -1,3 +1,3 @@
-import {App} from "../src/components/app";
+import CommonPage from "./common";
 
-export default () => <App/>
+export default CommonPage

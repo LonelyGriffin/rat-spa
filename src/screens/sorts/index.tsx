@@ -5,23 +5,23 @@ import {SlidedPage} from "../../components/slided_page";
 import {Carousel} from "../../components/carousel";
 import {ImageDataType} from "../../types/image_data";
 import {nextRotationIndex, prevRotationIndex} from "../../lib/rotate_index";
-import {NavContextConsumer} from "../../components/app/nav_context";
+import {NavContextConsumer} from "../../lib/nav_context";
 
-export const SortsScreen = () => (
+export const SortsScreen = (props: {initialIndex: number}) => (
   <NavContextConsumer>
     {({onNextPage, onPrevPage, fromNextScreen}) => (
       <SlidedPage
         header={'Виды'}
         slides={SLIDES}
-        renderSlide={(data, isActive) => <Item images={data} isActive={isActive} />}
+        renderSlide={(data: any, isActive) => <Item images={data} isActive={isActive} />}
         fromNextScreen={fromNextScreen}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}
+        initialIndex={props.initialIndex}
       />
     )}
   </NavContextConsumer>
 );
-
 
 const Item = (props: {images: ImageDataType[], isActive: boolean}) => {
   const {images, isActive} = props;

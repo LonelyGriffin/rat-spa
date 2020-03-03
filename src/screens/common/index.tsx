@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavHandler} from "../../components/nav_handler";
-import {NavContextConsumer} from "../../components/app/nav_context";
+import {NavContextConsumer} from "../../lib/nav_context";
 
 
 export const CommonScreen = () => {

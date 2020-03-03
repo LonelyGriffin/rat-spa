@@ -1,10 +1,10 @@
 import React from 'react';
 const css = require('./index.module.css');
 import cn from 'classnames';
-import {NavHandler} from "../../components/nav_handler";
-import {NavContextConsumer} from "../../components/app/nav_context";
+import {NavContextConsumer} from "../../src/lib/nav_context";
+import {NavHandler} from "../../src/components/nav_handler";
 
-export const LifeScreen = () => {
+const LifeScreen = () => {
   return (
     <NavContextConsumer>
       {({onNextPage, onPrevPage}) => (
@@ -127,3 +127,5 @@ export const LifeScreen = () => {
     </NavContextConsumer>
   )
 }
+
+export default LifeScreen
