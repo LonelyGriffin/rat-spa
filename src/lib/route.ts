@@ -61,7 +61,7 @@ export type RoutePoint = {
 }
 
 export const routePointToSlideSectionIndex = (point: RoutePoint, slides: SlideType<any>[]) => {
-  let result = 0;
+  let result = -1;
   let stop = false;
 
   slides.forEach(slide => slide.sections.forEach(section => {
@@ -73,6 +73,6 @@ export const routePointToSlideSectionIndex = (point: RoutePoint, slides: SlideTy
       stop = true
     }
   }))
-
+  console.log(result)
   return result
 }

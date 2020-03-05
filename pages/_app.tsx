@@ -52,25 +52,26 @@ const App = ({Component, props}: any) => {
   const [navContext, setNavContext] = useState({
     screenIndex: 0,
     fromNextScreen: false,
-    onNextPage: () => {
-      const screenIndex = navContext.screenIndex < SCREENS.length - 1 ? navContext.screenIndex + 1 : 0
-      setNavContext({
-        ...navContext,
-        fromNextScreen: false,
-        screenIndex
-      });
-      router.push(SCREENS[screenIndex].path)
-    },
-    onPrevPage: () => {
-      const screenIndex = navContext.screenIndex > 0 ? navContext.screenIndex - 1 : SCREENS.length - 1
-      router.push(SCREENS[screenIndex].path)
-      setNavContext({
-        ...navContext,
-        fromNextScreen: true,
-        screenIndex
-      })
-    },
   });
+
+  const onNextPage = () => {
+    const screenIndex = navContext.screenIndex < SCREENS.length - 1 ? navContext.screenIndex + 1 : 0
+    setNavContext({
+      ...navContext,
+      fromNextScreen: false,
+      screenIndex
+    });
+    router.push(SCREENS[screenIndex].path)
+  }
+  const onPrevPage = () => {
+    const screenIndex = navContext.screenIndex > 0 ? navContext.screenIndex - 1 : SCREENS.length - 1
+    router.push(SCREENS[screenIndex].path)
+    setNavContext({
+      ...navContext,
+      fromNextScreen: true,
+      screenIndex
+    })
+  }
 
   const setScreenByKey = (key: string) => {
     const index = keyToIndex(key);
@@ -83,7 +84,7 @@ const App = ({Component, props}: any) => {
   };
 
   return (
-    <NavContextProvider value={navContext}>
+    <NavContextProvider value={{...navContext, onNextPage, onPrevPage}}>
       <NavigationWheel
         items={SCREENS}
         onItemClick={setScreenByKey}

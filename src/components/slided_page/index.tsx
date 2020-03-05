@@ -42,14 +42,12 @@ const flatIndexToSlideSection = (flatIndex: number, slides: SlideType<any>[]) =>
   let sectionIndex = 0;
   let  i = 0;
 
-  while(i <= flatIndex) {
+  while(i < flatIndex) {
+    sectionIndex++
     if (!slides[slideIndex].sections[sectionIndex]) {
       slideIndex++
       sectionIndex = 0
-    } else {
-      sectionIndex++
     }
-
     i++
   }
 
@@ -60,6 +58,7 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
   static getDerivedStateFromProps (props: Props<any>, state: State) {
     const needUpdateSlideIndex = state.initialIndex != props.initialIndex
     const {slideIndex, sectionIndex} = needUpdateSlideIndex ? flatIndexToSlideSection(props.initialIndex, props.slides) : state
+    console.log('get', props.initialIndex, slideIndex, sectionIndex)
     return {
       ...state,
       initialIndex: needUpdateSlideIndex  ? props.initialIndex : state.initialIndex,
@@ -99,8 +98,8 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
       nextSectionIndex = this.props.slides[nextSlideIndex].sections.length - 1
     }
 
-    this.props.router.push(this.props.slides[nextSlideIndex].sections[nextSectionIndex].path.path)
-
+    const url = this.props.slides[nextSlideIndex].sections[nextSectionIndex].path.path
+    history.pushState(null, null as any, url)
     this.setState({
       sectionIndex: nextSectionIndex,
       slideIndex: nextSlideIndex
@@ -120,7 +119,9 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
       return
     }
 
-    this.props.router.push(this.props.slides[nextSlideIndex].sections[nextSectionIndex].path.path)
+    const url = this.props.slides[nextSlideIndex].sections[nextSectionIndex].path.path
+
+    history.pushState(null, null as any, url)
 
     this.setState({
       sectionIndex: nextSectionIndex,
