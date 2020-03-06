@@ -117,7 +117,7 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         text: 'У этой породы отсутствует остевой волос - внешний слой длинных, плотных волос. Оставлен только подшерсток - короткий, мягкий, бархатный. На мордочке и нижней части тела длинней и плотнее. Усики короткие, немного закрученные вниз.',
         data: [
           {
-            src: '/images/resources/sorts/skin_type/downy_1.jpg',
+            src: '/images/resources/sorts/skin_type/downy_1.jpeg',
             alt: ''
           },
           {

@@ -46,11 +46,22 @@ const SCREENS = [
 
 const keyToIndex = (key: string) => parseInt(key, 10) || 0;
 const indexToKey = (index: number) => index >= 0 ? `${index}` : '0';
+const getInitialScreenIndex = (url: string) => {
+  let result = 0
+
+  SCREENS.forEach(screen => {
+    if (screen.path === url) {
+      result = screen.index
+    }
+  })
+  return result
+}
 
 const App = ({Component, props}: any) => {
   const router = useRouter()
+
   const [navContext, setNavContext] = useState({
-    screenIndex: 0,
+    screenIndex: getInitialScreenIndex(router.pathname),
     fromNextScreen: false,
   });
 
