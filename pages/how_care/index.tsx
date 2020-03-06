@@ -16,7 +16,6 @@ const Component  = () => {
   return (
     <NavContextConsumer>
       {({fromNextScreen}) => {
-
         if (fromNextScreen) {
           const lastSlide = SLIDES[SLIDES.length - 1]
           route.push(lastSlide.sections[lastSlide.sections.length - 1].path.path)
