@@ -8,7 +8,7 @@ const lifeSrc = "/images/icons/life.svg";
 const sortsSrc = "/images/icons/sorts.svg";
 import cn from "classnames";
 import {NavigationWheel} from "../src/components/navigation_wheel";
-import {NavContextProvider} from "../src/lib/nav_context";
+import {NavContextProvider, NavContextValues} from "../src/lib/nav_context";
 import {useRouter} from "next/router";
 
 const SCREENS = [
@@ -63,6 +63,7 @@ const App = ({Component, props}: any) => {
   const [navContext, setNavContext] = useState({
     screenIndex: getInitialScreenIndex(router.pathname),
     fromNextScreen: false,
+    hasNav: false
   });
 
   const onNextPage = () => {
@@ -70,7 +71,8 @@ const App = ({Component, props}: any) => {
     setNavContext({
       ...navContext,
       fromNextScreen: false,
-      screenIndex
+      screenIndex,
+      hasNav: true
     });
     router.push(SCREENS[screenIndex].path)
   }
@@ -80,7 +82,8 @@ const App = ({Component, props}: any) => {
     setNavContext({
       ...navContext,
       fromNextScreen: true,
-      screenIndex
+      screenIndex,
+      hasNav: true
     })
   }
 
@@ -94,8 +97,15 @@ const App = ({Component, props}: any) => {
     router.push(SCREENS[index].path)
   };
 
+  const setContextValues = (values: Partial<NavContextValues>) => {
+    setNavContext({
+      ...navContext,
+      ...values
+    });
+  }
+
   return (
-    <NavContextProvider value={{...navContext, onNextPage, onPrevPage}}>
+    <NavContextProvider value={{...navContext, onNextPage, onPrevPage, setContextValues}}>
       <NavigationWheel
         items={SCREENS}
         onItemClick={setScreenByKey}

@@ -8,6 +8,7 @@ import {RoutePoint} from "../../lib/route";
 import {NextRouter, withRouter} from "next/router";
 const css = require('./index.module.css');
 import cn from 'classnames'
+import {NavContext} from "../../lib/nav_context";
 
 export type SectionType<T> = {
   path: RoutePoint
@@ -57,6 +58,7 @@ const flatIndexToSlideSection = (flatIndex: number, slides: SlideType<any>[]) =>
 };
 
 class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
+  static contextType = NavContext;
   static getDerivedStateFromProps (props: Props<any>, state: State) {
     const needUpdateSlideIndex = state.initialIndex != props.initialIndex
     const {slideIndex, sectionIndex} = needUpdateSlideIndex ? flatIndexToSlideSection(props.initialIndex, props.slides) : state
@@ -101,7 +103,8 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
     }
 
     const url = this.props.slides[nextSlideIndex].sections[nextSectionIndex].path.path
-    history.pushState(null, null as any, url)
+    history.pushState(null, null as any, url);
+    this.context.setContextValues({hasNav: true});
     this.setState({
       sectionIndex: nextSectionIndex,
       slideIndex: nextSlideIndex
@@ -124,7 +127,7 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
     const url = this.props.slides[nextSlideIndex].sections[nextSectionIndex].path.path
 
     history.pushState(null, null as any, url)
-
+    this.context.setContextValues({hasNav: true});
     this.setState({
       sectionIndex: nextSectionIndex,
       slideIndex: nextSlideIndex

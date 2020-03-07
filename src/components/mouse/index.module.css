@@ -1,0 +1,107 @@
+.root {
+    position: relative;
+    width: 40px;
+    height: 60px;
+    border: 4px solid #d6ad60;
+    border-radius: 20px;
+    transform: scale(0.6);
+    animation: mouseAnimBody 4s infinite;
+}
+
+.button {
+    position: absolute;
+    left: calc(50% - 2px);
+    top: 5px;
+    width: 4px;
+    height: 20px;
+    background: #d6ad60;
+    border-radius: 1px;
+}
+
+.root:after, .root:before {
+    --size: 20px;
+    content: '';
+    position: absolute;
+    left: calc(50% - var(--size) / 2 - 2px);
+    width: var(--size);
+    height: var(--size);
+    border-left: #d6ad60 solid 4px;
+    border-top: #d6ad60 solid 4px;
+    transform: rotate(-150grad);
+    opacity: 0;
+}
+
+.root:after {
+    top: 60px;
+    animation: mouseAnimArrow1 4s infinite;
+}
+.root:before {
+    top: 80px;
+    animation: mouseAnimArrow2 4s infinite;
+}
+
+@keyframes mouseAnimBody {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes mouseAnimArrow1 {
+    0% {
+        opacity: 0;
+    }
+
+    22% {
+        opacity: 0;
+    }
+
+    33% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes mouseAnimArrow2 {
+    0% {
+        opacity: 0;
+    }
+
+    33% {
+        opacity: 0;
+    }
+
+    46% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
