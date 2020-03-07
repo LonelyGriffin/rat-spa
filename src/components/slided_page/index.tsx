@@ -27,7 +27,7 @@ type Props<T> = {
   onNextPage: () => void
   onPrevPage: () => void
   fromNextScreen: boolean
-  renderSlide: (data: T, isActive: boolean) => React.ReactNode
+  renderSlide: (data: T, isActive: boolean, path: string) => React.ReactNode
   router: NextRouter
 }
 
@@ -58,7 +58,7 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
   static getDerivedStateFromProps (props: Props<any>, state: State) {
     const needUpdateSlideIndex = state.initialIndex != props.initialIndex
     const {slideIndex, sectionIndex} = needUpdateSlideIndex ? flatIndexToSlideSection(props.initialIndex, props.slides) : state
-    console.log('get', props.initialIndex, slideIndex, sectionIndex)
+
     return {
       ...state,
       initialIndex: needUpdateSlideIndex  ? props.initialIndex : state.initialIndex,
@@ -129,7 +129,7 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
     });
   };
 
-  renderCarouselItem = (section: SectionType<T>, isActive: boolean) => this.props.renderSlide(section.data, isActive);
+  renderCarouselItem = (section: SectionType<T>, isActive: boolean) => this.props.renderSlide(section.data, isActive, section.path.path);
 
   render () {
     const {slideIndex, sectionIndex} = this.state;

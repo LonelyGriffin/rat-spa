@@ -11,7 +11,7 @@ export const HowCareScreen = (props: {initialIndex: number}) => (
       <SlidedPage
         header={'Как ухаживать'}
         slides={SLIDES}
-        renderSlide={(data: any) => <img src={data.src} className={css.image}/>}
+        renderSlide={(data: any, _, path: string) => <a  href={path} className={css.notActive}><img src={data.src} className={css.image}/></a>}
         fromNextScreen={fromNextScreen}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}
