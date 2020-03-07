@@ -7,6 +7,7 @@ import {NavHandler} from "../nav_handler";
 import {RoutePoint} from "../../lib/route";
 import {NextRouter, withRouter} from "next/router";
 const css = require('./index.module.css');
+import cn from 'classnames'
 
 export type SectionType<T> = {
   path: RoutePoint
@@ -29,6 +30,7 @@ type Props<T> = {
   fromNextScreen: boolean
   renderSlide: (data: T, isActive: boolean, path: string) => React.ReactNode
   router: NextRouter
+  hideTopNavPanel?: boolean
 }
 
 type State = {
@@ -146,14 +148,18 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
       <>
         <NavHandler onNext={this.handleNextCarouselItem} onPrev={this.handlePrevCarouselItem}/>
         <TwoColumnLayout
-          title={this.props.header}
           key={'layout'}
-          renderHeader={() => <NavigationPanel
-            items={this.props.slides}
-            currentItemIndex={slideIndex}
-            onItemClick={this.handleNavPanelItemClick}
-            classname={css.nav_panel}
-          />}
+          renderHeader={() => (
+            <>
+              <h1 className={cn(css.title, this.props.hideTopNavPanel && css.title_without_top_nav_panel)}>{this.props.header}</h1>
+              {!this.props.hideTopNavPanel && <NavigationPanel
+                items={this.props.slides}
+                currentItemIndex={slideIndex}
+                onItemClick={this.handleNavPanelItemClick}
+                classname={css.nav_panel}
+              />}
+            </>
+          )}
           renderLeft={() => (
             <Carousel
               classname={css.carousel}

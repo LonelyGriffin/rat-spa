@@ -1,0 +1,10 @@
+.image {
+    width: 600px;
+    height: 400px;
+    padding: 0 10px;
+}
+.notActive {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+}
