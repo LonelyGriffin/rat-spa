@@ -12,7 +12,7 @@ export const LayoutRightTextBlock = (props: Props) => {
 
   return (
     <div className={css.root}>
-      <h3  className={css.fadein} key={title}>{title}</h3>
+      <h3  className={cn(css.header, css.fadein)} key={title}>{title}</h3>
       <p className={cn(css.text, css.fadein)} key={text}>{text}</p>
     </div>
   )

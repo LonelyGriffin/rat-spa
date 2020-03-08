@@ -5,6 +5,12 @@
     display: flex;
 }
 
+@media screen and (max-width: 1350px) {
+    .root {
+        height: 30px;
+    }
+}
+
 .item {
     flex: 1;
     height: 100%;

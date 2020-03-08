@@ -3,6 +3,7 @@ import {SLIDES} from "./resources";
 const css = require('./index.module.css');
 import {SlidedPage} from "../../components/slided_page";
 import {NavContextConsumer} from "../../lib/nav_context";
+import {SlideImage} from "../../components/slide_image";
 
 export const HowChooseScreen = (props: {initialIndex: number}) => (
   <NavContextConsumer>
@@ -10,7 +11,7 @@ export const HowChooseScreen = (props: {initialIndex: number}) => (
       <SlidedPage
         header={'Как ухаживать'}
         slides={SLIDES}
-        renderSlide={(data: any) => <img src={data.src} className={css.image}/>}
+        renderSlide={(data: any, _, path: string) => <SlideImage img={data} path={path} />}
         fromNextScreen={fromNextScreen}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}

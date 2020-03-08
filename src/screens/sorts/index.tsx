@@ -6,6 +6,7 @@ import {Carousel} from "../../components/carousel";
 import {ImageDataType} from "../../types/image_data";
 import {nextRotationIndex, prevRotationIndex} from "../../lib/rotate_index";
 import {NavContextConsumer} from "../../lib/nav_context";
+import {SlideImage} from "../../components/slide_image";
 
 export const SortsScreen = (props: {initialIndex: number}) => (
   <NavContextConsumer>
@@ -13,7 +14,7 @@ export const SortsScreen = (props: {initialIndex: number}) => (
       <SlidedPage
         header={'Виды'}
         slides={SLIDES}
-        renderSlide={(data: any, isActive) => <Item images={data} isActive={isActive} />}
+        renderSlide={(data: any, isActive, path) => <Item images={data} isActive={isActive} path={path} />}
         fromNextScreen={fromNextScreen}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}
@@ -23,7 +24,7 @@ export const SortsScreen = (props: {initialIndex: number}) => (
   </NavContextConsumer>
 );
 
-const Item = (props: {images: ImageDataType[], isActive: boolean}) => {
+const Item = (props: {images: ImageDataType[], isActive: boolean, path: string}) => {
   const {images, isActive} = props;
   const [index, setIndex] = useState(1);
 
@@ -36,7 +37,7 @@ const Item = (props: {images: ImageDataType[], isActive: boolean}) => {
       items={images}
       currentItemIndex={index}
       notActiveScale={isActive ? 0.9 : 1}
-      renderItem={(image) => <img src={image.src} className={css.image} alt={image.alt}/>}
+      renderItem={(image) => <SlideImage img={image} path={props.path} />}
       onNext={handleNext}
       onPrev={handlePrev}
     />

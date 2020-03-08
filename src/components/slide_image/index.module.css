@@ -1,0 +1,24 @@
+.image {
+    width: 600px;
+    height: 400px;
+    padding: 0 10px;
+}
+.notActive {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1600px) {
+    .image {
+        width: 500px;
+        height: 333px;
+    }
+}
+
+@media screen and (max-width: 1360px) {
+    .image {
+        width: 400px;
+        height: 266px;
+    }
+}

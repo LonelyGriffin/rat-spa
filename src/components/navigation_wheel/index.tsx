@@ -43,7 +43,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
     const currentItemIndex = items.findIndex(item => extractKey(item) === currentItemKey)
 
     const HEIGHT = 500;
-    const MIN_WIDTH = 220;
+    const MIN_WIDTH = 140;
     const MAX_WIDTH = 650;
     const MIN_VISIBLE_WHEEL_WIDTH = 40;
     const MAX_VISIBLE_WHEEL_WIDTH = 40;

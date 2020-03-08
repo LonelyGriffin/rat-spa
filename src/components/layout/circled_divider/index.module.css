@@ -9,3 +9,14 @@
     border: 2px solid rgba(182, 141, 64, 0.5);
     pointer-events: none;
 }
+
+@media screen  and (max-width: 1450px){
+    .root {
+        right: 500px;
+    }
+}
+@media screen  and (max-width: 1240px){
+    .root {
+        right: 400px;
+    }
+}

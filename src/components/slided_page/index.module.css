@@ -24,6 +24,12 @@
     margin: 0;
 }
 
+@media screen and (max-width: 1350px) {
+    .title {
+        font-size: 42px;
+    }
+}
+
 .title_without_top_nav_panel {
     margin-top: 20px;
 }

@@ -102,7 +102,7 @@ const App = ({Component, props}: any) => {
       ...navContext,
       ...values
     });
-  }
+  };
 
   return (
     <NavContextProvider value={{...navContext, onNextPage, onPrevPage, setContextValues}}>

@@ -39,6 +39,7 @@ html, body, #root, #__next {
     font-family: RatHelvetica, "Helvetica Neue", Helvetica, Arial, serif;
     font-size: 24px;
     line-height: 120%;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
