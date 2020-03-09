@@ -57,7 +57,11 @@ const getInitialScreenIndex = (url: string) => {
   return result
 }
 
-const App = ({Component, props}: any) => {
+const App = ({Component, props, pageProps}: any) => {
+  if (pageProps.statusCode) {
+    return <Component {...pageProps}/>
+  }
+
   const router = useRouter()
 
   const [navContext, setNavContext] = useState({
