@@ -56,6 +56,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
 
     const bodyRef = useRef<HTMLDivElement>(null);
     const wheelRef = useRef<HTMLDivElement>(null);
+    const isRealHoveredRef = useRef<boolean>(false);
     const bandRefs = useRef(new Map<string, HTMLDivElement>()).current;
 
     const waveCenterYRef = useRef(HEIGHT / 2);
@@ -133,6 +134,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
     }
 
     const mouseEnterHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+        isRealHoveredRef.current = true
         setIsHovered(true)
         expandAnimationRef.current = true;
         updateBody(MAX_WIDTH);
@@ -156,10 +158,12 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
         });
     };
     const mouseLeaveHandler = () => {
+        isRealHoveredRef.current = false
         setIsHovered(false)
         updateBody(MIN_WIDTH);
         const fromY = waveCenterYRef.current;
         const toY = HEIGHT / 2;
+        waveCenterYRef.current = toY;
         GSAP.to(wheelRef.current!, {
             duration: 0.5,
             ease: "power2.inOut",
@@ -206,10 +210,9 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                 },
                 onUpdate: (params) => {
                     const relativeShift = getRelativeShift(currentItemIndex, prevActive, items.length, params.ratio);
-
-                    const minBandWidth = isHovered ? MIN_BAND_WIDTH_ON_HOVER : MIN_BAND_WIDTH
-                    const maxBandWidth = isHovered ? MAX_BAND_WIDTH_ON_HOVER : MAX_BAND_WIDTH
-                    const visibleWheelWidth = isHovered ? MAX_VISIBLE_WHEEL_WIDTH : MIN_VISIBLE_WHEEL_WIDTH;
+                    const minBandWidth = isRealHoveredRef.current ? MIN_BAND_WIDTH_ON_HOVER : MIN_BAND_WIDTH
+                    const maxBandWidth = isRealHoveredRef.current ? MAX_BAND_WIDTH_ON_HOVER : MAX_BAND_WIDTH
+                    const visibleWheelWidth = isRealHoveredRef.current ? MAX_VISIBLE_WHEEL_WIDTH : MIN_VISIBLE_WHEEL_WIDTH;
 
                     updateBands(visibleWheelWidth, waveCenterYRef.current, minBandWidth, maxBandWidth, relativeShift);
                 }
