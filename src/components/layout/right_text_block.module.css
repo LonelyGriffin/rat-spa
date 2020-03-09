@@ -50,7 +50,7 @@
     }
 }
 
-@media screen and (max-height: 750px) {
+@media screen and (max-width: 1450px) and (max-height: 750px) {
     .root {
         height: calc(100% - 25px);
     }

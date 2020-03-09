@@ -142,12 +142,7 @@
     line-height: 140%;
     position: absolute;
     width: 75%;
-    opacity: 0.75;
     transition: opacity 0.2s linear;
-}
-
-.point:hover .point_text {
-    opacity: 1;
 }
 
 .point_line_l::after {
@@ -179,6 +174,7 @@
     top: -35px;
     font-size: 30px;
     font-weight: bold;
+    opacity: 0.75;
 }
 
 .point_text_l {
@@ -219,6 +215,7 @@
     top: -35px;
     font-size: 30px;
     font-weight: bold;
+    opacity: 0.75;
 }
 
 .point_text_r {
@@ -226,10 +223,8 @@
     top: 4px;
 }
 
-@media screen and (min-width: 1900px) {
-    .point_text {
-        font-size: 16px;
-    }
+@media screen and (max-width: 1500px) {
+
 }
 
 @media screen and (max-height: 800px) {
@@ -244,7 +239,7 @@
         right: 15px;
     }
     .point_text {
-        font-size: 18px;
+        font-size: 20px;
         line-height: 115%;
         width: 80%;
     }
