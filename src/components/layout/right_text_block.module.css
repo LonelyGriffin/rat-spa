@@ -17,35 +17,48 @@
 
 @media screen and (min-width: 1900px) {
     .header {
-        font-size: 1.5em;
+        font-size: 30px;
     }
     .text {
-        font-size: 1em;
+        font-size: 26px;
     }
 }
 
-@media screen and (max-width: 1450px){
+@media screen and (max-width: 1550px){
     .root {
         height: calc(100% - 25px);
     }
     .header {
-        font-size: 0.9em;
+        font-size: 26px;
     }
     .text {
-        font-size: 0.65em;
+        font-size: 22px;
         padding: 10px 20px;
     }
 }
 
-@media screen and (max-width: 1260px){
+@media screen and (max-width: 1450px) {
     .root {
-        height: calc(100% - 10px);
+        height: calc(100% - 25px);
     }
     .header {
-        font-size: 0.7em;
+        font-size: 22px;
     }
     .text {
-        font-size: 0.6em;
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (max-height: 750px) {
+    .root {
+        height: calc(100% - 25px);
+    }
+    .header {
+        font-size: 22px;
+    }
+    .text {
+        font-size: 14px;
         padding: 10px 20px;
     }
 }
