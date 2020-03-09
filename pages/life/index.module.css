@@ -235,6 +235,18 @@
 @media screen and (max-height: 800px) {
     .title {
         font-size: 42px;
+        height: 80px;
+    }
+    .point_title_l, .point_title_r {
+        font-size: 24px;
+    }
+    .point_text_r {
+        right: 15px;
+    }
+    .point_text {
+        font-size: 17px;
+        line-height: 120%;
+        width: 80%;
     }
     .root {
         padding-left: 130px;
@@ -248,7 +260,8 @@
         left: -192px;
     }
     .subtitle_left, .subtitle_right {
-        transform: scale(0.8);
+        transform: scale(0.6);
+        top: -30px;
     }
     .left {
         left: 40px

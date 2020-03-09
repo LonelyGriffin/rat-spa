@@ -21,7 +21,7 @@ const SCREENS = [
   {
     path: '/sorts',
     index: 1,
-    title: 'Породы',
+    title: 'Виды',
     icon: sortsSrc,
   },
   {

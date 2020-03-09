@@ -22,7 +22,7 @@
   "scripts": {
     "start": "next",
     "build": "next build",
-    "prod": "next export",
+    "prod": "npm run build && next export",
     "eject": "next start",
     "deploy": "gh-pages -d build"
   },

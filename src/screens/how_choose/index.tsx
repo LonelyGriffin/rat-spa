@@ -9,7 +9,7 @@ export const HowChooseScreen = (props: {initialIndex: number}) => (
   <NavContextConsumer>
     {({onNextPage, onPrevPage, fromNextScreen}) => (
       <SlidedPage
-        header={'Как ухаживать'}
+        header={'Как выбрать'}
         slides={SLIDES}
         renderSlide={(data: any, _, path: string) => <SlideImage img={data} path={path} />}
         fromNextScreen={fromNextScreen}
