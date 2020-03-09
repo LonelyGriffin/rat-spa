@@ -15,7 +15,7 @@
     flex: 1;
 }
 .center {
-    width: 551px;
+    min-width: 551px;
     height: 551px;
     position: relative;
 }
@@ -224,4 +224,47 @@
 .point_text_r {
     right: 30px;
     top: 4px;
+}
+
+@media screen and (min-width: 1900px) {
+    .point_text {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .title {
+        font-size: 42px;
+    }
+    .root {
+        padding-left: 130px;
+        padding-right: 20px;
+    }
+    .center {
+        transform: scale(0.8);
+        min-width: calc(0.8 * 551px);
+    }
+    .mouse {
+        left: -192px;
+    }
+    .subtitle_left, .subtitle_right {
+        transform: scale(0.8);
+    }
+    .left {
+        left: 40px
+    }
+
+    .right {
+        left: -20px;
+    }
+
+    .points  {
+        transform: scale(0.95);
+        width: calc(100% + 60px);
+        left: -40px;
+    }
+
+    .point {
+        transform: scale(0.8);
+    }
 }

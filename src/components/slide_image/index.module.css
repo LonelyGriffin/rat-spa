@@ -9,6 +9,14 @@
     text-decoration: none;
 }
 
+
+@media screen and (min-width: 1900px) {
+    .image {
+        width: 800px;
+        height: 533px;
+    }
+}
+
 @media screen and (max-width: 1600px) {
     .image {
         width: 500px;
