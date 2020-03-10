@@ -95,3 +95,24 @@
 .overlay_active {
     width: calc(100vw + 500px);
 }
+
+.about {
+    width: 25px;
+    height: 25px;
+    background: url('/images/info.svg');
+    position: absolute;
+    top: calc(50% - 15px);
+    left: 5px;
+    z-index: 100000;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.about:hover {
+    opacity: 1;
+}
+
+.about:active {
+    opacity: 0.75;
+}

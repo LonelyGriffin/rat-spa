@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 const css = require("./index.module.css");
 import GSAP from "gsap";
 import cn from "classnames"
+import Link from "next/link";
 
 const getRelativeShift = (activeIndex: number, prevIndex: number, count: number, progress: number) => {
     const n = Math.floor(count / 2);
@@ -253,6 +254,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                       className={css.wheel}
                       ref={wheelRef}
                     />
+                    <Link href={'/about'}><a className={css.about} title={'О сайте'} /></Link>
                 </div>
             </div>
         </div>
