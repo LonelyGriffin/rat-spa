@@ -1,7 +1,7 @@
 import * as React from "react";
 import {NavContextConsumer} from "../../src/lib/nav_context";
 import {useRouter} from "next/router";
-import {SLIDES} from "../../src/screens/how_care/resources";
+import {SLIDES} from "../../src/screens/common/resources";
 import {CommonScreen} from "../../src/screens/common";
 
 var isNode = new Function("try {return this===global;}catch(e){return false;}");
