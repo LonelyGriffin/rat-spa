@@ -10,6 +10,7 @@ export const NavContext = React.createContext({
   screenIndex: 0,
   fromNextScreen: false,
   hasNav: false,
+  outWheelNav: false,
   onNextPage: () => {},
   onPrevPage: () => {},
   setValue: (values: Partial<NavContextValues>) => {},

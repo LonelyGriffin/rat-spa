@@ -47,10 +47,10 @@ const SCREENS = [
 const keyToIndex = (key: string) => parseInt(key, 10) || 0;
 const indexToKey = (index: number) => index >= 0 ? `${index}` : '0';
 const getInitialScreenIndex = (url: string) => {
-  let result = 0
+  let result = null
 
   SCREENS.forEach(screen => {
-    if (screen.path === url) {
+    if (url.includes(screen.path)) {
       result = screen.index
     }
   })
@@ -64,10 +64,13 @@ const App = ({Component, props, pageProps}: any) => {
 
   const router = useRouter()
 
+  const screenIndex = getInitialScreenIndex(router.pathname)
+
   const [navContext, setNavContext] = useState({
-    screenIndex: getInitialScreenIndex(router.pathname),
+    screenIndex: screenIndex || 0,
     fromNextScreen: false,
-    hasNav: false
+    hasNav: false,
+    outWheelNav: screenIndex === null
   });
 
   const onNextPage = () => {
@@ -87,7 +90,8 @@ const App = ({Component, props, pageProps}: any) => {
       ...navContext,
       fromNextScreen: true,
       screenIndex,
-      hasNav: true
+      hasNav: true,
+      outWheelNav: false
     })
   }
 
@@ -96,7 +100,8 @@ const App = ({Component, props, pageProps}: any) => {
     setNavContext({
       ...navContext,
       fromNextScreen: false,
-      screenIndex: index
+      screenIndex: index,
+      outWheelNav: false
     });
     router.push(SCREENS[index].path)
   };
@@ -108,6 +113,13 @@ const App = ({Component, props, pageProps}: any) => {
     });
   };
 
+  const handleAbout = () => {
+    setNavContext({
+      ...navContext,
+      outWheelNav: true
+    });
+  }
+
   return (
     <NavContextProvider value={{...navContext, onNextPage, onPrevPage, setContextValues}}>
       <NavigationWheel
@@ -115,6 +127,8 @@ const App = ({Component, props, pageProps}: any) => {
         onItemClick={setScreenByKey}
         currentItemKey={indexToKey(navContext.screenIndex)}
         extractKey={item => indexToKey(item.index)}
+        onClickAbout={handleAbout}
+        outWheelNav={navContext.outWheelNav}
         renderItem={(item, isExpanded) => {
           return (
             <div className={cn(css.nav_item, isExpanded && css.nav_item_active)}>

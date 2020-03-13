@@ -26,6 +26,8 @@ type OuterProps<T> = {
     currentItemKey: string
     onItemClick: (key: string) => void
     renderItem: (item: T, isExpanded: boolean) => React.ReactNode
+    onClickAbout: () => void
+    outWheelNav: boolean
 }
 
 function usePrevious<T>(value: T) {
@@ -243,7 +245,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                             return <div
                               onClick={() => onItemClick(key)}
                               key={key}
-                              className={cn(css.band, i === currentItemIndex && css.band_active)}
+                              className={cn(css.band, i === currentItemIndex && !props.outWheelNav && css.band_active)}
                               ref={inst => inst === null ? bandRefs.delete(key) : bandRefs.set(key, inst)}
                             >
                                 {props.renderItem(item, isHovered)}
@@ -254,7 +256,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                       className={css.wheel}
                       ref={wheelRef}
                     />
-                    <Link href={'/about'}><a className={css.about} title={'О сайте'} /></Link>
+                    <Link href={'/about'}><a onClick={props.onClickAbout} className={css.about} title={'О сайте'} /></Link>
                 </div>
             </div>
         </div>
