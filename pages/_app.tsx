@@ -118,7 +118,7 @@ const App = ({Component, props, pageProps}: any) => {
       ...navContext,
       outWheelNav: true
     });
-  }
+  };
 
   return (
     <NavContextProvider value={{...navContext, onNextPage, onPrevPage, setContextValues}}>

@@ -256,7 +256,7 @@ export function NavigationWheel<T>(props: OuterProps<T>) {
                       className={css.wheel}
                       ref={wheelRef}
                     />
-                    <Link href={'/about'}><a onClick={props.onClickAbout} className={css.about} title={'О сайте'} /></Link>
+                    <Link href={'/about'}><a onClick={props.onClickAbout} className={cn(css.about, props.outWheelNav && css.about_active)} title={'Контакты'} >@</a></Link>
                 </div>
             </div>
         </div>
