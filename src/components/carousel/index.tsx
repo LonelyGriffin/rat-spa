@@ -6,7 +6,7 @@ import GSAP from "gsap";
 type Props<T> = {
   items: T[]
   currentItemIndex: number
-  renderItem: (item: T, isActive: boolean) => React.ReactNode
+  renderItem: (item: T, isActive: boolean, inView: boolean) => React.ReactNode
   horizontal?: boolean
   classname?: string
   infinity?: boolean
@@ -84,13 +84,16 @@ export function Carousel<T>(props: Props<T>) {
             key={'first_clone'}
             onClick={onPrev}
         >
-          {renderItem(items[items.length - 1], false)}
+          {renderItem(items[items.length - 1], false, false)}
         </div>}
         {items.map((item, i) => {
+          const isActive = currentItemIndex === i
+          const inView = i >= currentItemIndex - 1 && i <= currentItemIndex + 1;
+
           return (
             <div
-              className={css.item}
-              style={{order: i, transform: scaleStyle(i === currentItemIndex ? 1 : scale)}}
+              className={cn(css.item, !isActive && css.pointer)}
+              style={{order: i, transform: scaleStyle(isActive ? 1 : scale)}}
               key={`${i}`}
               onClick={
                 i < innerIndex
@@ -101,7 +104,7 @@ export function Carousel<T>(props: Props<T>) {
               }
               ref={i === 0 ? firstItemRef : undefined}
             >
-              {renderItem(item, currentItemIndex === i)}
+              {renderItem(item, isActive, inView)}
             </div>
         )})}
         {infinity && <div
@@ -111,7 +114,7 @@ export function Carousel<T>(props: Props<T>) {
           ref={firstItemRef}
           onClick={onNext}
         >
-          {renderItem(items[0], false)}
+          {renderItem(items[0], false, false)}
         </div>}
       </div>
     </div>

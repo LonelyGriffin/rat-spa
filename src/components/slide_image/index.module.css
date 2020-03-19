@@ -2,11 +2,19 @@
     width: 600px;
     height: 400px;
     padding: 0 10px;
+    display: block;
 }
-.notActive {
+.link {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
+    display: block;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.inView {
+    opacity: 1;
 }
 
 

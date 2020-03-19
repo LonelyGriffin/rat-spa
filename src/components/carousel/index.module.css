@@ -12,3 +12,6 @@
 .item {
     transition: transform 0.7s ease-out;
 }
+.pointer:hover {
+    cursor: pointer;
+}

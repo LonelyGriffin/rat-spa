@@ -11,7 +11,7 @@ export const HowChooseScreen = (props: {initialIndex: number}) => (
       <SlidedPage
         header={'Как выбрать'}
         slides={SLIDES}
-        renderSlide={(data: any, _, path: string) => <SlideImage img={data} path={path} />}
+        renderSlide={(data: any, _, path: string, inView: boolean) => <SlideImage img={data} path={path} inView={inView}/>}
         fromNextScreen={fromNextScreen}
         onPrevPage={onPrevPage}
         onNextPage={onNextPage}

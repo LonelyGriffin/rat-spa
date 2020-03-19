@@ -29,7 +29,7 @@ type Props<T> = {
   onNextPage: () => void
   onPrevPage: () => void
   fromNextScreen: boolean
-  renderSlide: (data: T, isActive: boolean, path: string) => React.ReactNode
+  renderSlide: (data: T, isActive: boolean, path: string, inView: boolean) => React.ReactNode
   router: NextRouter
   hideTopNavPanel?: boolean
 }
@@ -134,7 +134,7 @@ class SlidedPageComponent<T> extends React.Component<Props<T>, State> {
     });
   };
 
-  renderCarouselItem = (section: SectionType<T>, isActive: boolean) => this.props.renderSlide(section.data, isActive, section.path.path);
+  renderCarouselItem = (section: SectionType<T>, isActive: boolean, inView: boolean) => this.props.renderSlide(section.data, isActive, section.path.path, inView);
 
   render () {
     const {slideIndex, sectionIndex} = this.state;
