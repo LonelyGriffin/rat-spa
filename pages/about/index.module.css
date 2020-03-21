@@ -45,3 +45,27 @@
     color: inherit;
     opacity: 0.75;
 }
+
+.github_icon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 10px;
+    margin-right: 10px;
+    background-image: url("/images/github_icon.svg");
+}
+
+.mail_icon {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 10px;
+    margin-right: 10px;
+    background-image: url("/images/mail_icon.svg");
+}
