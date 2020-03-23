@@ -1,6 +1,6 @@
 .root {
     width: 60%;
-    height: 100%;
+    height: calc(100% - 20px);
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -55,4 +55,17 @@
     padding-bottom: 40%;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 750px){
+    .root {
+        width: 90%;
+        height: calc(100% - 100px);
+    }
+    .title {
+        font-size: 100px;
+    }
+    .img {
+        padding-bottom: 50%;
+    }
 }
