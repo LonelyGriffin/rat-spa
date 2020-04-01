@@ -73,6 +73,5 @@ export const routePointToSlideSectionIndex = (point: RoutePoint, slides: SlideTy
       stop = true
     }
   }))
-  console.log(result)
   return result
 }
