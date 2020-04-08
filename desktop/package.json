@@ -14,7 +14,7 @@
     "classnames": "2.2.6",
     "gsap": "3.0.1",
     "lodash-es": "4.17.15",
-    "next": "^9.2.2",
+    "next": "^9.3.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "typescript": "3.7.2"
