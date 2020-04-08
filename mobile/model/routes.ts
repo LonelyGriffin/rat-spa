@@ -7,6 +7,7 @@ export type TRouteNode = {
   category: TCategory
 }
 
+// TODO превратить в билдер и применить для категорий
 const nextPathIndex = (() => {
   let index = 0
 
