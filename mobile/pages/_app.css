@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "RatHelvetica";
+    src: url(/fonts/helvetica/helvetica.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "RatHelvetica";
+    src: url(/fonts/helvetica/helvetica_bold.ttf) format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "RatHelvetica";
+    src: url(/fonts/helvetica/helvetica_oblique.ttf) format("truetype");
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: "RatHelvetica";
+    src: url(/fonts/helvetica/helvetica_bold_oblique.ttf) format("truetype");
+    font-weight: bold;
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: "RatHelveticaRounded";
+    src: url(/fonts/helvetica/helvetica_rounded_bold.otf) format("opentype");
+    font-weight: bold;
+}
+
+
+html, body, #root, #__next {
+    height: 100%;
+    width: 100%;
+    background-color: #222325;
+    margin: 0;
+    padding: 0;
+    color: #F4EBD0;
+    font-family: RatHelvetica, "Helvetica Neue", Helvetica, Arial, serif;
+    font-size: 24px;
+    line-height: 120%;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: RatHelveticaRounded, RatHelvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    line-height: 200%;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
