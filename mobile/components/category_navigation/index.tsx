@@ -20,7 +20,10 @@ const getDirection = (indexSub: number) => {
   } else {
     return indexSub > 0 ? 1 : -1
   }
- }
+}
+
+const isAboutCategory  = (category?: TCategory) => category && category.index === CATEGORY_MAP.about.index
+
 const reorderCategories = (categories: TCategory[], active: number) => {
 
   const result = []
@@ -40,7 +43,7 @@ export const CategoryNavigation = (props: Props) => {
   const animationReqRef = useRef(0)
   const [p, setP] = useState(0)
   const [currentCategory, setCurrentCategory] = useState(active)
-  const reorderedCategories = reorderCategories(categories.filter(x => x.index !== CATEGORY_MAP.about.index ), currentCategory?.index || 0)
+  const reorderedCategories = reorderCategories(categories.filter(x => !isAboutCategory(x)), currentCategory?.index || 0)
   const categoriesCount = reorderedCategories.length
   const categorisToRender = [
     reorderedCategories[categoriesCount - 1],
@@ -74,13 +77,13 @@ export const CategoryNavigation = (props: Props) => {
   
 
   useEffect(() => {
-    if (active?.index === CATEGORY_MAP.about.index) {
-      return
-    }
     if (currentCategory?.index === active?.index) {
       return
     }
-
+    
+    if (isAboutCategory(active)) {
+      return
+    }
     const direction = getDirection(currentCategory!.index - active!.index)
     // console.log(currentCategory?.index, active?.index, direction, setCurrentCategory, animateTo)
     // setCurrentCategory(active)
@@ -107,7 +110,7 @@ export const CategoryNavigation = (props: Props) => {
             const key = i < 1 || i > categorisToRender.length - 2
               ? `${category.index}_${i}`
               : `${category.index}`
-            const categoryStyle = category.index === currentCategory?.index 
+            const categoryStyle = category.index === active?.index 
               ? {left: x, top: y, border: '2px solid rgba(182, 141, 64, 0.7)'} 
               : {left: x, top: y}
 
@@ -126,7 +129,7 @@ export const CategoryNavigation = (props: Props) => {
           })}
         </ul>
         <div className={css.wheelShadow}></div>
-        <div className={css.wheel}></div>
+        <div className={css.wheel} style={{border: isAboutCategory(active) ? '2px solid rgba(182, 141, 64, 0.7)' : ''}}></div>
       </div>
     </div>
   )
