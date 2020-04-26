@@ -25,9 +25,9 @@ export const CATEGORY_MAP = {
     title: 'Виды',
     iconSrc: '/images/icons/sorts.svg',
     section: {
-      body_type: {title: ''},
-      skin_type: {title: ''},
-      color: {title: ''},
+      body_type: {title: 'Телосложение'},
+      skin_type: {title: 'Тип шерсти'},
+      color: {title: 'Окрас'},
     }
   },
   how_choose: {
@@ -41,9 +41,9 @@ export const CATEGORY_MAP = {
     title: 'Как ухаживать',
     iconSrc: '/images/icons/how_care.svg',
     section: {
-      habitat: {title: ''},
-      care: {title: ''},
-      parenting: {title: ''},
+      habitat: {title: 'Место обитания'},
+      care: {title: 'Уход'},
+      parenting: {title: 'Воспитание'},
     }
   },
   life: {

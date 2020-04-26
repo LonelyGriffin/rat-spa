@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react'
 import {WithStoreProps, withStore} from '../withStore'
 import css from './index.module.css'
-import {Swipeable, EventData, } from 'react-swipeable'
+import {Swipeable, EventData} from 'react-swipeable'
 import BezierEasing from 'bezier-easing'
 import { CATEGORY_ARRAY } from '../../model/category'
 import { CategoryNavigation } from '../category_navigation'
 import { increseCursor, decreaseCursor, getPrevDataItem, getNextDataItem } from '../../model/store_context'
 import { TDataNode } from '../../model/screen'
 import { PageWithSlider } from '../page_with_slider'
+import cn from 'classnames'
 
 const easeOutCirc = BezierEasing(0.445, 0.05, 0.55, 0.95)
 
@@ -89,6 +90,38 @@ const PageSelectorComponent = (props: Props) => {
   const prevDataItem = getPrevDataItem(props.store)
   const nextDataItem = getNextDataItem(props.store)
   const activeCategory = dataItem.category
+
+
+  const setDataItem = (newDataItem: TDataNode) => {
+    props.store.setStoreProps({
+      data: props.store.data.map(x =>  x.index === newDataItem.index ? newDataItem : x)
+    })
+  }
+
+  /// HEADER
+  const headerTitle = activeCategory.title
+  const categorySectionTitles = Object.values(activeCategory.section).map(x => x.title)
+  const headerSections = props.store.data
+    .reduce((result, x) => {
+      const section = x.section
+      if (!section) {
+        return result
+      }
+
+      const hasInCategory = categorySectionTitles.includes(section.title)
+      const hasInResult = result.includes(section.title)
+      
+      if (hasInCategory && !hasInResult) {
+        result.push(section.title)
+      }
+
+      return result
+    }, [] as string[])
+
+  const headerActiveSection = headerSections.findIndex(x => x === dataItem.section?.title)
+  // console.log(headerSections, categorySectionTitles, headerActiveSection)
+  ///
+
   return (
     <Swipeable
       onSwiping={handleSwiping}
@@ -97,13 +130,55 @@ const PageSelectorComponent = (props: Props) => {
       className={css.root}
       delta={30}
     >
-      <div className={css.pages} ref={rootRef} style={{left: `${p * 100}%`}}>
-        <div className={css.page_left}><Page dataItem={prevDataItem} /></div>
-        <div className={css.page_right}><Page dataItem={nextDataItem} /></div>
-        <Page dataItem={dataItem} />
-      </div>
       <div className={css.staticContentForPageWithSlider}>
-
+        <div className={css.header}>
+          <h1 className={css.headerTitle}>{headerTitle}</h1>
+          {headerSections.length > 0 && <div className={css.headerSections}>
+            {headerSections.map((section, i) => (
+              <div
+                className={cn(css.headerSection, i === headerActiveSection && css.headerActiveSection)}
+                key={section}
+                style={{zIndex: headerSections.length - i}}
+              >
+                <div className={css.headerSectionInner}>
+                {section}
+                </div>
+              </div>
+            ))}
+          </div>}
+        </div>
+        <div className={css.circleSeparator}/>
+      </div>
+      <div
+        ref={rootRef}
+        className={css.page}
+        key={prevDataItem.index}
+        style={{left: `${p * 100 - 100}%`}}
+      >
+        <Page
+          dataItem={prevDataItem}
+          setData={setDataItem}
+        />
+      </div>
+      <div
+        className={css.page}
+        key={dataItem.index}
+        style={{left: `${p * 100}%`}}
+      >
+        <Page
+          dataItem={dataItem}
+          setData={setDataItem}
+        />
+      </div>
+      <div
+        className={css.page}
+        key={nextDataItem.index}
+        style={{left: `${p * 100 + 100}%`}}
+      >
+        <Page
+          dataItem={nextDataItem}
+          setData={setDataItem}
+        />
       </div>
       <CategoryNavigation
         categories={CATEGORY_ARRAY}
@@ -113,14 +188,14 @@ const PageSelectorComponent = (props: Props) => {
   )
 }
 
-const Page = (props: {dataItem: TDataNode}) => {
+const Page = (props: {dataItem: TDataNode, setData: (newData: TDataNode) => void}) => {
   const {custom} = props.dataItem
 
   if (custom) {
     return <div>Custom</div>
   }
   
-  return <PageWithSlider data={props.dataItem} />
+  return <PageWithSlider data={props.dataItem} setData={props.setData} />
 }
 
 export const PageSelector = withStore(PageSelectorComponent)

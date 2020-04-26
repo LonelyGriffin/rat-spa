@@ -11,6 +11,7 @@ export type TDataNode = {
   title?: string
   text?: string
   images?: TImage[]
+  imagesCursor?: number
   custom?: 'about' | 'life'
   paths: string[]
 }
@@ -542,6 +543,5 @@ export const DATA_ARRAY = (() => {
     }
   }
   recursive(DATA_TREE, [])
-  console.log('result', result)
   return result
 })().sort((a, b) => a.index - b.index)
