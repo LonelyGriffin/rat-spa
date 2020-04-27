@@ -1,0 +1,162 @@
+.root {
+  top: 0; 
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  padding-bottom: 100px;
+}
+
+.body {
+  width: 100%;
+  position: relative;
+}
+
+.navClearFix {
+  height: 100px;
+}
+
+.header {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  top: 0;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  height: 30px;
+  position: sticky;
+  z-index: 1;
+  background-color: #222325;
+  box-shadow: 5px 5px 5px 0px #222325;
+}
+
+.headerImg {
+  background-image: url('/images/mouse.svg');
+  width: calc(694px * 0.4);
+  height: calc(551px * 0.4);
+  margin: auto;
+  margin-top: 10px;
+  left: calc(-0.15px * (694 - 551));
+  position: relative;
+  background-size: cover;
+}
+
+.headerNav {
+  width: 100%;
+  position: sticky;
+  top: 30px;
+  z-index: 2;
+  background-color: #222325;
+  box-shadow: 5px 5px 5px 0px #222325;
+}
+
+.headerNavList {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+.headerNavItem {
+  margin:0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: 0;
+}
+
+.headerNavLink {
+  position: relative;
+  margin-top: 20px;
+  height: 30px;
+  width: 110px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/subtitle-bg.svg');
+  background-size: cover;
+  text-decoration: none;
+  color: #F4EBD0;
+}
+
+.headerNavLinkLeaf::after {
+  position: absolute;
+  content: '';
+  width: 48px;
+  height: 27px;
+  top: -20px;
+  left: 35px;
+  background-image: url('/images/leaf.svg');
+  background-size: cover;
+}
+
+.headerNavLinkGen::after {
+  position: absolute;
+  content: '';
+  width: 48px;
+  height: 27px;
+  top: -20px;
+  left: 35px;
+  background-image: url('/images/gen.svg');
+  background-size: cover;
+}
+
+.main {
+  top: 0;
+  padding-top: 300px;
+}
+
+.article {
+  margin: 20px 33px;
+}
+.articleTitle {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 18px;
+  opacity: 0.7;
+  position: relative;
+  padding: 0 0 15px 20px;
+}
+
+.articleTitle::before {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  content: '';
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #D6AD60;
+}
+
+.articleTitle::after {
+  position: absolute;
+  left: 0;
+  top: 23px;
+  content: '';
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #D6AD60;
+}
+
+.articleText {
+  font-size: 14px;
+  line-height: 16px;
+  padding-left: 20px;
+}
+
+.anchor {
+  position: relative;
+  top: -100px;
+}

@@ -9,6 +9,7 @@ import { increseCursor, decreaseCursor, getPrevDataItem, getNextDataItem } from 
 import { TDataNode } from '../../model/screen'
 import { PageWithSlider } from '../page_with_slider'
 import cn from 'classnames'
+import { LifePage } from '../life_page'
 
 const easeOutCirc = BezierEasing(0.445, 0.05, 0.55, 0.95)
 
@@ -130,7 +131,7 @@ const PageSelectorComponent = (props: Props) => {
       className={css.root}
       delta={30}
     >
-      <div className={css.staticContentForPageWithSlider}>
+      {!dataItem.custom && <div className={css.staticContentForPageWithSlider}>
         <div className={css.header}>
           <h1 className={css.headerTitle}>{headerTitle}</h1>
           {headerSections.length > 0 && <div className={css.headerSections}>
@@ -148,7 +149,7 @@ const PageSelectorComponent = (props: Props) => {
           </div>}
         </div>
         <div className={css.circleSeparator}/>
-      </div>
+      </div>}
       <div
         ref={rootRef}
         className={css.page}
@@ -191,8 +192,8 @@ const PageSelectorComponent = (props: Props) => {
 const Page = (props: {dataItem: TDataNode, setData: (newData: TDataNode) => void}) => {
   const {custom} = props.dataItem
 
-  if (custom) {
-    return <div>Custom</div>
+  if (custom === 'life') {
+    return <LifePage />
   }
   
   return <PageWithSlider data={props.dataItem} setData={props.setData} />

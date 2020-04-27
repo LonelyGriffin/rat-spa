@@ -17,6 +17,11 @@ export type TDataNode = {
 }
 
 export const DATA_TREE = {
+  life: {
+    index: nextNodeIndex(),
+    custom: 'life',
+    category: CATEGORY_MAP.life
+  },
   common: {
     index: nextNodeIndex(),
     category: CATEGORY_MAP.common,
@@ -519,11 +524,6 @@ export const DATA_TREE = {
         images: { src: '/images/mock.jpg', alt: 'alt' }
       }
     }
-  },
-  life: {
-    index: nextNodeIndex(),
-    custom: 'life',
-    category: CATEGORY_MAP.life
   },
   about: {
     index: nextNodeIndex(),
