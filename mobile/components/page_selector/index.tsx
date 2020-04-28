@@ -210,6 +210,17 @@ const PageSelectorComponent = (props: Props) => {
                 className={cn(css.headerSection, i === headerActiveSection && css.headerActiveSection)}
                 key={section}
                 style={{zIndex: headerSections.length - i}}
+                onClick={() => {
+                  console.log(1111)
+                  const targetDataItem = props.store.data.find(x => x.section && x.section.title === section)
+
+                  if (targetDataItem !== undefined) {
+                    props.store.setStoreProps({
+                      ...props.store,
+                      cursor: targetDataItem.index
+                    })
+                  }
+                }}
               >
                 <div className={css.headerSectionInner}>
                 {section}
