@@ -6,6 +6,8 @@ import BezierEasing from 'bezier-easing'
 type Props = {
   categories: TCategory[]
   active?: TCategory
+  onCategoryClick: (index: number) => void
+  onAboutClick: () => void
 }
 
 
@@ -119,6 +121,7 @@ export const CategoryNavigation = (props: Props) => {
                 style={categoryStyle}
                 className={css.category}
                 key={key}
+                onClick={() => props.onCategoryClick(category.index)}
               >
                 <div
                   className={css.categoryIcon}
@@ -129,7 +132,7 @@ export const CategoryNavigation = (props: Props) => {
           })}
         </ul>
         <div className={css.wheelShadow}></div>
-        <div className={css.wheel} style={{border: isAboutCategory(active) ? '2px solid rgba(182, 141, 64, 0.7)' : ''}}></div>
+        <div onClick={props.onAboutClick} className={css.wheel} style={{border: isAboutCategory(active) ? '2px solid rgba(182, 141, 64, 0.7)' : ''}}></div>
       </div>
     </div>
   )

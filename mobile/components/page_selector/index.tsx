@@ -21,6 +21,17 @@ const PageSelectorComponent = (props: Props) => {
   const hasAnimationRef = useRef(false)
   const screenWidth = useRef(0)
   const rootRef = useRef<HTMLDivElement>(null)
+  const [dataItems, setDataItems] = useState([
+    getPrevDataItem(props.store),
+    props.store.data[props.store.cursor],
+    getNextDataItem(props.store)
+  ])
+  const dataItem = dataItems[1]
+  const prevDataItem = dataItems[0]
+  const nextDataItem = dataItems[2]
+  const prevCursorRef = useRef(props.store.cursor)
+
+
   // TODO не переименовывать - конфликт имен
   const [p, setP] = useState(0)
 
@@ -65,13 +76,11 @@ const PageSelectorComponent = (props: Props) => {
     }
 
     if (p > 0) {
-      await animateTo(1, 500)
       props.store.setStoreProps(decreaseCursor(props.store))
+      
     } else {
-      await animateTo(-1, 500)
       props.store.setStoreProps(increseCursor(props.store))
     }
-    setP(0)
   }
 
   useEffect(() => {
@@ -85,16 +94,74 @@ const PageSelectorComponent = (props: Props) => {
   }, [])
 
   useEffect(() => {
+    console.log('effect', props, prevCursorRef.current, props.store.cursor)
+    
+    
+    const cursor = props.store.cursor
+    const prevCursor = prevCursorRef.current
+    
+    if (cursor === prevCursor) {
+      return
+    }
+    
+    const count = props.store.data.length
+    const leftDistanse = prevCursor > cursor
+      ? prevCursor - cursor
+      : prevCursor + count - cursor
+    
+    const rightDistanse = prevCursor < cursor
+      ? cursor - prevCursor
+      : cursor + count - prevCursor
+    
+    // console.log(leftDistanse, rightDistanse)
+    
+    if (leftDistanse > rightDistanse) {
+      setDataItems([
+        getPrevDataItem({...props.store, cursor: prevCursor}),
+        props.store.data[prevCursor],
+        props.store.data[cursor],
+      ])
 
+      console.log('left')
+      animateTo(-1, 500).then(() => {
+        setDataItems([
+          getPrevDataItem(props.store),
+          props.store.data[cursor],
+          getNextDataItem(props.store)
+        ])
+        setP(0)
+        prevCursorRef.current = cursor
+        console.log('left after anim')
+      })
+    } else {
+      setDataItems([
+        props.store.data[cursor],
+        props.store.data[prevCursor],
+        getNextDataItem({...props.store, cursor: prevCursor}),
+      ])
+      console.log('right')
+      animateTo(1, 500).then(() => {
+        setDataItems([
+          getPrevDataItem(props.store),
+          props.store.data[cursor],
+          getNextDataItem(props.store)
+        ])
+        setP(0)
+        prevCursorRef.current = cursor
+        console.log('right after anim')
+      })
+    }
   }, [props.store.cursor])
 
-  const dataItem = props.store.data[props.store.cursor]
-  const prevDataItem = getPrevDataItem(props.store)
-  const nextDataItem = getNextDataItem(props.store)
+  useEffect(() => {
+    console.log(JSON.parse(JSON.stringify(dataItems)))
+  },[dataItems])
+
   const activeCategory = dataItem.category
 
 
-  const setDataItem = (newDataItem: TDataNode) => {
+
+  const updateDataItem = (newDataItem: TDataNode) => {
     props.store.setStoreProps({
       data: props.store.data.map(x =>  x.index === newDataItem.index ? newDataItem : x)
     })
@@ -124,7 +191,7 @@ const PageSelectorComponent = (props: Props) => {
   // console.log(headerSections, categorySectionTitles, headerActiveSection)
   ///
 
-  console.log(prevDataItem, dataItem, nextDataItem)
+  // console.log('render', prevDataItem.index, dataItem.index, nextDataItem.index)
 
   return (
     <Swipeable
@@ -161,7 +228,7 @@ const PageSelectorComponent = (props: Props) => {
       >
         <Page
           dataItem={prevDataItem}
-          setData={setDataItem}
+          setData={updateDataItem}
         />
       </div>
       <div
@@ -171,7 +238,7 @@ const PageSelectorComponent = (props: Props) => {
       >
         <Page
           dataItem={dataItem}
-          setData={setDataItem}
+          setData={updateDataItem}
         />
       </div>
       <div
@@ -181,12 +248,32 @@ const PageSelectorComponent = (props: Props) => {
       >
         <Page
           dataItem={nextDataItem}
-          setData={setDataItem}
+          setData={updateDataItem}
         />
       </div>
       <CategoryNavigation
         categories={CATEGORY_ARRAY}
         active={activeCategory}
+        onCategoryClick={(index: number) => {
+          const targetDataItem = props.store.data.find(x => x.category.index === index)
+
+          if (targetDataItem !== undefined) {
+            props.store.setStoreProps({
+              ...props.store,
+              cursor: targetDataItem.index
+            })
+          }
+        }}
+        onAboutClick={() => {
+          const targetDataItem = props.store.data.find(x => x.custom === 'about')
+
+          if (targetDataItem !== undefined) {
+            props.store.setStoreProps({
+              ...props.store,
+              cursor: targetDataItem.index
+            })
+          }
+        }}
       />
     </Swipeable>
   )
@@ -194,7 +281,7 @@ const PageSelectorComponent = (props: Props) => {
 
 const Page = (props: {dataItem: TDataNode, setData: (newData: TDataNode) => void}) => {
   const {custom} = props.dataItem
-  
+
   if (custom === 'life') {
     return <LifePage />
   }

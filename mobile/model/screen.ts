@@ -17,16 +17,6 @@ export type TDataNode = {
 }
 
 export const DATA_TREE = {
-  about: {
-    index: nextNodeIndex(),
-    custom: 'about',
-    category: CATEGORY_MAP.about
-  },
-  life: {
-    index: nextNodeIndex(),
-    custom: 'life',
-    category: CATEGORY_MAP.life
-  },
   common: {
     index: nextNodeIndex(),
     category: CATEGORY_MAP.common,
@@ -251,7 +241,7 @@ export const DATA_TREE = {
       ticked: {
         index: nextNodeIndex(),
         category: CATEGORY_MAP.sorts,
-        sectionTitle: '',
+        section: CATEGORY_MAP.sorts.section.color,
         title: 'Тикированные',
         text: 'Тикированые волосы имеют разный цвет на разных  участках волоска. Допускается равномерное вкрапление однотонных волосков. тикированный окрас агути - это самый естественный и природный окрас у крыс.',
         images: [
@@ -280,7 +270,7 @@ export const DATA_TREE = {
       silver: {
         index: nextNodeIndex(),
         category: CATEGORY_MAP.sorts,
-        sectionTitle: '',
+        section: CATEGORY_MAP.sorts.section.color,
         title: 'Серебристые',
         text: 'Серебристый окрас это дополнительный признак к другим видам окраса. Характерной чертой является сильное вкрапление серебристых волосков и волосков другого окраса. Например чередование с однородными. Серебритые волоски должны быть максимально белыми, без вкраплений, за исключением кончика. Так же серебристыми считаются когда количество белых и других волосков примерно поровну. При небольших вкраплениях или при практически полностью серебряными волосками нельзя назвать окрас серебристым.',
         images: [
@@ -305,7 +295,7 @@ export const DATA_TREE = {
       combined: {
         index: nextNodeIndex(),
         category: CATEGORY_MAP.sorts,
-        sectionTitle: '',
+        section: CATEGORY_MAP.sorts.section.color,
         title: 'Комбинированные',
         text: 'Как следует из названия этот окрас является комбинацией двух и более цветов распределенных по телу. За исключением белого цвета.',
         images: [
@@ -330,7 +320,7 @@ export const DATA_TREE = {
       marked: {
         index: nextNodeIndex(),
         category: CATEGORY_MAP.sorts,
-        sectionTitle: '',
+        section: CATEGORY_MAP.sorts.section.color,
         title: 'Маркированные',
         text: 'Макированный окрас это комбинированный, но имеющий на теле участки белого цвета. Название произошло от термина маркировка - рисунок имеющий белый и цветные участки.',
         images: [
@@ -359,7 +349,7 @@ export const DATA_TREE = {
       albinos: {
         index: nextNodeIndex(),
         category: CATEGORY_MAP.sorts,
-        sectionTitle: '',
+        section: CATEGORY_MAP.sorts.section.color,
         title: 'Альбиносы',
         text: 'Альбиносы это яркий, кристально чистый белый окрас. Без вкраплений на протяжении всего волоска. Глаза красные, розовые. Из за специфической мутации глаз, альбиносы обычно имеют слабое зрение. Но для крысок это не критично - зрение не является их основным органом чувств.',
         images: [
@@ -469,7 +459,7 @@ export const DATA_TREE = {
       },
       not_permitted_feed: {
         index: nextNodeIndex(),
-        category: CATEGORY_MAP.common,
+        category: CATEGORY_MAP.how_care,
         section: CATEGORY_MAP.how_care.section.care,
         title: 'Чем нельзя кормить',
         text: 'Сладкое, соленое, перченое, жареное, копченое, жирное, высоко калорийное для крысок категорически запрещено. С осторожностью стоит давать то что может вызвать газообразование - бобы, фасоль, горох, редис, редька, репа, картофель, молоко. Избыток фруктов и овощей может вызвать у животного диарею.',
@@ -529,7 +519,17 @@ export const DATA_TREE = {
         images: [{ src: '/images/mock.jpg', alt: 'alt' }]
       }
     }
-  }
+  },
+  life: {
+    index: nextNodeIndex(),
+    custom: 'life',
+    category: CATEGORY_MAP.life
+  },
+  about: {
+    index: nextNodeIndex(),
+    custom: 'about',
+    category: CATEGORY_MAP.about
+  },
 }
 
 export const DATA_ARRAY = (() => {

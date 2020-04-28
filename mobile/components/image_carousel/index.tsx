@@ -56,7 +56,7 @@ export const ImageCarousel = (props: Props) => {
     if (!listElement) {
       return
     }
-    console.log(active, percent, height, (active + percent) * height)
+    // console.log(active, percent, height, (active + percent) * height)
     listElement.style.top = -(active + percent) * height + 'px'
   }
 
