@@ -1,0 +1,96 @@
+.root {
+  width: 100%;
+  height: 100%;
+}
+
+.scroll {
+  width: 100%;
+  height: 100%;
+  padding-top: 30px;
+  overflow-y: auto;
+}
+
+.title {
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  z-index: 1;
+  background-color: #222325;
+  box-shadow: 5px 5px 5px 0px #222325;
+}
+
+.section {
+  padding: 0 20px;
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  height: 100%;
+  font-size: 14px;
+  padding-bottom: 100px;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 30px;
+}
+
+.description {
+  margin-top: 15px;
+  margin-left: 20px;
+  line-height: 150%;
+}
+
+.contacts {
+  margin-left: 20px;
+  line-height: 200%;
+}
+
+.contacts dt {
+  margin-top: 15px;
+}
+
+.contacts dd {
+  margin: 0;
+  padding-left: 20px;
+  margin-inline-start: 0;
+}
+
+.link {
+  text-decoration: underline;
+  color: inherit;
+  opacity: 0.75;
+}
+
+.github_icon {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+  background-image: url("/images/github_icon.svg");
+}
+
+.mail_icon {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+  background-image: url("/images/mail_icon.svg");
+}

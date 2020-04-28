@@ -10,6 +10,7 @@ import { TDataNode } from '../../model/screen'
 import { PageWithSlider } from '../page_with_slider'
 import cn from 'classnames'
 import { LifePage } from '../life_page'
+import {AboutPage} from '../about_page';
 
 const easeOutCirc = BezierEasing(0.445, 0.05, 0.55, 0.95)
 
@@ -123,6 +124,8 @@ const PageSelectorComponent = (props: Props) => {
   // console.log(headerSections, categorySectionTitles, headerActiveSection)
   ///
 
+  console.log(prevDataItem, dataItem, nextDataItem)
+
   return (
     <Swipeable
       onSwiping={handleSwiping}
@@ -191,9 +194,13 @@ const PageSelectorComponent = (props: Props) => {
 
 const Page = (props: {dataItem: TDataNode, setData: (newData: TDataNode) => void}) => {
   const {custom} = props.dataItem
-
+  
   if (custom === 'life') {
     return <LifePage />
+  }
+
+  if (custom === 'about') {
+    return <AboutPage />
   }
   
   return <PageWithSlider data={props.dataItem} setData={props.setData} />
