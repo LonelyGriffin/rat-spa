@@ -22,7 +22,7 @@ export const ImageCarousel = (props: Props) => {
   const persentRef = useRef(0)
   const animatePendingRef = useRef(false)
 
-  const animateTo = async (percent: number, duration: number) => new Promise(resolve => {
+    const animateTo = async (percent: number, duration: number) => new Promise(resolve => {
     animatePendingRef.current = true
 
     const startPercent = persentRef.current
@@ -56,7 +56,7 @@ export const ImageCarousel = (props: Props) => {
     if (!listElement) {
       return
     }
-    // console.log(active, percent, height, (active + percent) * height)
+
     listElement.style.top = -(active + percent) * height + 'px'
   }
 

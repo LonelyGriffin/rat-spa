@@ -1,7 +1,7 @@
 .root {
   position: fixed;
   bottom: 0;
-  height: 68px;
+  height: 87px;
   width: 100%;
   z-index: 1;
   background: #222325;
@@ -14,6 +14,15 @@
   margin: auto;
   height: 100%;
   overflow: hidden;
+}
+
+.wheelContainer {
+  position: relative;
+  top: -87px;
+  height: 100%;
+  width: 300px;
+  margin: auto;
+  pointer-events: none;
 }
 
 /**
@@ -47,7 +56,7 @@ left - right shadow
   width: 1505px;
   height: 1505px;
   left: -605px;
-  top: 52px;
+  top: 56px;
   background: #222325;
   border-radius: 50%;
 }
@@ -57,9 +66,14 @@ left - right shadow
   width: 1500px;
   height: 1500px;
   left: -600px;
-  top: 55px;
+  top: 60px;
   background: #423D3D;
   border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: all;
 }
 
 .categories {

@@ -16,11 +16,26 @@ const easeOutCirc = BezierEasing(0.445, 0.05, 0.55, 0.95)
 const WIDTH = 300
 // const HEIGHT = 68
 
-const getDirection = (indexSub: number) => {
-  if (Math.abs(indexSub) > 1) {
-    return indexSub > 0 ? -1 : 1
-  } else {
-    return indexSub > 0 ? 1 : -1
+const circelIncr = (x: number, total: number) => x + 1 >= total ? 0 : x + 1
+const circelDecr = (x: number, total: number) => x > 0 ? x - 1 : total - 1
+
+const getDirection = (from: number, to: number, total: number) => {
+  let left = 0
+  let right = 0
+  let leftIndex = from
+  let rightIndex = from
+
+  while(true) {
+    if (leftIndex === to) {
+      return left
+    }
+    if (rightIndex === to) {
+      return right
+    }
+    leftIndex = circelDecr(leftIndex, total)
+    rightIndex = circelIncr(rightIndex, total)
+    left += 1
+    right -= 1
   }
 }
 
@@ -48,9 +63,11 @@ export const CategoryNavigation = (props: Props) => {
   const reorderedCategories = reorderCategories(categories.filter(x => !isAboutCategory(x)), currentCategory?.index || 0)
   const categoriesCount = reorderedCategories.length
   const categorisToRender = [
+    reorderedCategories[categoriesCount - 2],
     reorderedCategories[categoriesCount - 1],
     ...reorderedCategories,
     reorderedCategories[0],
+    reorderedCategories[1],
   ]
   const animateTo = async (percent: number, duration: number) => new Promise(resolve => {
     hasAnimationRef.current = true
@@ -86,9 +103,7 @@ export const CategoryNavigation = (props: Props) => {
     if (isAboutCategory(active)) {
       return
     }
-    const direction = getDirection(currentCategory!.index - active!.index)
-    // console.log(currentCategory?.index, active?.index, direction, setCurrentCategory, animateTo)
-    // setCurrentCategory(active)
+    const direction = getDirection(currentCategory!.index, active!.index, reorderedCategories.length)
     
     animateTo(direction, 300).then(() => {
       setCurrentCategory(active)
@@ -103,13 +118,13 @@ export const CategoryNavigation = (props: Props) => {
       <div className={css.container}>
         <ul className={css.categories}>
           {categorisToRender.map((category, i) => {
-            const n = i - 1 + p
+            const n = i - 2 + p
             const x = (WIDTH * n) / categoriesCount
             const centerdX = x + 0.5 * WIDTH / categoriesCount
             const pix = centerdX * Math.PI / WIDTH
             const piy = 1 - Math.sin(pix)
-            const y = 30 * piy
-            const key = i < 1 || i > categorisToRender.length - 2
+            const y = 20 * piy
+            const key = i < 2 || i > categorisToRender.length - 3
               ? `${category.index}_${i}`
               : `${category.index}`
             const categoryStyle = category.index === active?.index 
@@ -131,8 +146,16 @@ export const CategoryNavigation = (props: Props) => {
             )
           })}
         </ul>
+      </div>
+      <div className={css.wheelContainer}>
         <div className={css.wheelShadow}></div>
-        <div onClick={props.onAboutClick} className={css.wheel} style={{border: isAboutCategory(active) ? '2px solid rgba(182, 141, 64, 0.7)' : ''}}></div>
+        <div
+          onClick={props.onAboutClick}
+          className={css.wheel}
+          style={{border: isAboutCategory(active) ? '2px solid rgba(182, 141, 64, 0.7)' : ''}}
+        >
+          @
+        </div>
       </div>
     </div>
   )
