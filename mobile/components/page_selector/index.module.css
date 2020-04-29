@@ -42,7 +42,7 @@
   height: 4000px;
   border-radius: 50%;
   left: calc(50vw - 2000px);
-  bottom: calc(100vh - 60px);
+  top: calc(60px - 4000px);
   border: 3px solid rgba(182, 141, 64, 0.5);
   background-color: rgba(34, 35, 37, 1);
   box-shadow: 5px 5px 10px 0px #222325;
