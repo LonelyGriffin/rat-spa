@@ -1,6 +1,7 @@
 import { nextIndexBuilder } from '../utils/next_index';
 import { TImage } from '../types/image';
 import { TCategory, CATEGORY_MAP, TSection } from './category';
+import { StoreContextProps } from './store_context';
 
 const nextNodeIndex = nextIndexBuilder()
 
@@ -545,3 +546,20 @@ export const DATA_ARRAY = (() => {
   recursive(DATA_TREE, [])
   return result
 })().sort((a, b) => a.index - b.index)
+
+export type StaticProps = {
+  initialStoreProps: StoreContextProps
+}
+
+export const getStaticPropsByIndex = (index: number) => async function (): Promise<{props: StaticProps}> {
+  const initialStoreProps: StoreContextProps = {
+    data: DATA_ARRAY,
+    cursor: index
+  }
+
+  return {
+    props: {
+      initialStoreProps
+    }
+  }
+}
