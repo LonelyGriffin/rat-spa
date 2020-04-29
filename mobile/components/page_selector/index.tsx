@@ -123,7 +123,7 @@ const PageSelectorComponent = (props: Props) => {
       ])
 
       console.log('left')
-      animateTo(-1, 500).then(() => {
+      animateTo(-1, 300).then(() => {
         setDataItems([
           getPrevDataItem(props.store),
           props.store.data[cursor],
@@ -140,7 +140,7 @@ const PageSelectorComponent = (props: Props) => {
         getNextDataItem({...props.store, cursor: prevCursor}),
       ])
       console.log('right')
-      animateTo(1, 500).then(() => {
+      animateTo(1, 300).then(() => {
         setDataItems([
           getPrevDataItem(props.store),
           props.store.data[cursor],
@@ -168,8 +168,19 @@ const PageSelectorComponent = (props: Props) => {
   }
 
   /// HEADER
+  const targetItemData = p > 0 ? prevDataItem : nextDataItem
+  const allOpacityPersent = targetItemData.custom && dataItem.custom
+    ? 0
+    : targetItemData.custom && !dataItem.custom
+      ? 1 - Math.abs(p)
+      : !targetItemData.custom && dataItem.custom
+        ? Math.abs(p)
+        : 1
+  // console.log(allOpacityPersent, targetItemData)
   const headerTitle = activeCategory.title
+  const targetHeaderTitle = targetItemData.category.title
   const categorySectionTitles = Object.values(activeCategory.section).map(x => x.title)
+  const targetCategorySectionTitles = Object.values(targetItemData.category.section).map(x => x.title)
   const headerSections = props.store.data
     .reduce((result, x) => {
       const section = x.section
@@ -186,8 +197,34 @@ const PageSelectorComponent = (props: Props) => {
 
       return result
     }, [] as string[])
+    const targetHeaderSections = props.store.data
+      .reduce((result, x) => {
+        const section = x.section
+        if (!section) {
+          return result
+        }
+
+        const hasInCategory = targetCategorySectionTitles.includes(section.title)
+        const hasInResult = result.includes(section.title)
+        
+        if (hasInCategory && !hasInResult) {
+          result.push(section.title)
+        }
+
+        return result
+      }, [] as string[])
 
   const headerActiveSection = headerSections.findIndex(x => x === dataItem.section?.title)
+
+  const sectionsOpacity = targetHeaderSections.length > 0 && categorySectionTitles.length > 0
+    ? 1
+    : targetHeaderSections.length === 0 && categorySectionTitles.length > 0
+      ? 1 - Math.abs(p)
+      : targetHeaderSections.length > 0 && categorySectionTitles.length === 0
+        ? Math.abs(p)
+        : 0
+  const titlePositionPersent = 1 - sectionsOpacity
+  // console.log(sectionsOpacity, targetHeaderSections.length, categorySectionTitles.length)
   // console.log(headerSections, categorySectionTitles, headerActiveSection)
   ///
 
@@ -201,17 +238,18 @@ const PageSelectorComponent = (props: Props) => {
       className={css.root}
       delta={30}
     >
-      {!dataItem.custom && <div className={css.staticContentForPageWithSlider}>
+      {<div className={css.staticContentForPageWithSlider} style={{opacity: allOpacityPersent}}>
+      <div className={css.topCircleSeparator}  style={{opacity: 1 - sectionsOpacity}}/>
         <div className={css.header}>
-          <h1 className={css.headerTitle}>{headerTitle}</h1>
-          {headerSections.length > 0 && <div className={css.headerSections}>
-            {headerSections.map((section, i) => (
+          <h1 className={css.headerTitle} style={{top: titlePositionPersent * 18, opacity: 1 - Math.abs(p)}}>{headerTitle}</h1>
+          <h1 className={css.headerTitle}  style={{top: titlePositionPersent * 18, opacity: Math.abs(p)}}>{targetHeaderTitle}</h1>
+          {<div className={css.headerSections} style={{top: 27, opacity: sectionsOpacity}}>
+            {(headerSections.length > 0 ? headerSections : targetHeaderSections).map((section, i) => (
               <div
                 className={cn(css.headerSection, i === headerActiveSection && css.headerActiveSection)}
                 key={section}
                 style={{zIndex: headerSections.length - i}}
                 onClick={() => {
-                  console.log(1111)
                   const targetDataItem = props.store.data.find(x => x.section && x.section.title === section)
 
                   if (targetDataItem !== undefined) {
