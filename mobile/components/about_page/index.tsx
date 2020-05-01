@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import css from './index.module.css'
 import { Swipeable, EventData } from 'react-swipeable'
+import { Up, Down } from "../../utils/swipe_orientaition"
 
 export const AboutPage = () => {
   const isVerticalSwipeRef = useRef(false)
@@ -9,7 +10,7 @@ export const AboutPage = () => {
   const contentSwipingHandler = (e: EventData) => {
     if(isFirstSwipeEvent.current) {
       isFirstSwipeEvent.current = false
-      if (e.dir === 'Up' || e.dir === 'Down') {
+      if (e.dir === Up() || e.dir === Down()) {
         isVerticalSwipeRef.current = true
       }
     }

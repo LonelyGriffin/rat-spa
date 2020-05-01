@@ -44,9 +44,19 @@
   left: calc(50vw - 2000px);
   top: calc(60px - 4000px);
   border: 3px solid rgba(182, 141, 64, 0.5);
-  background-color: rgba(34, 35, 37, 1);
+  background-color: rgba(34, 35, 37, 1)s;
   box-shadow: 5px 5px 10px 0px #222325;
   box-sizing: border-box;
+}
+
+@media all and (orientation:landscape) {
+  .circleSeparator {
+    left: calc(50vh - 2000px);
+    top: calc(80px + 100vh * 400 / 600 + 20px);
+  }
+  .topCircleSeparator {
+    left: calc(50vh - 2000px);
+  }
 }
 
 .header {
@@ -62,7 +72,7 @@
   position: absolute;
   width: 100%;
   font-size: 20px;
-  line-height: 23px;
+  line-height: 30px;
   text-align: center;
   translate: all 1s;
 }

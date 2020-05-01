@@ -124,10 +124,13 @@
 .main {
   top: 0;
   padding-top: 310px;
+  padding: 310px 30px 300px 30px;
 }
 
 .article {
-  margin: 20px 33px;
+  margin: auto;
+  margin-top: 40px;
+  max-width: 500px;
 }
 .articleTitle {
   font-weight: bold;

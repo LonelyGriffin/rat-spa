@@ -5,6 +5,7 @@
 }
 
 .list {
+  width: 100%;
   position: absolute;
   list-style: none;
   padding: 0;

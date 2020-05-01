@@ -3,6 +3,7 @@ import css from './index.module.css'
 import { Swipeable, EventData } from 'react-swipeable'
 import cn from 'classnames'
 import { useState } from 'react';
+import { Up, Down } from '../../utils/swipe_orientaition';
 
 
 export const LifePage = () => {
@@ -14,7 +15,7 @@ export const LifePage = () => {
   const contentSwipingHandler = (e: EventData) => {
     if(isFirstSwipeEvent.current) {
       isFirstSwipeEvent.current = false
-      if (e.dir === 'Up' || e.dir === 'Down') {
+      if (e.dir === Up() || e.dir === Down()) {
         isVerticalSwipeRef.current = true
       }
     }
@@ -39,7 +40,7 @@ export const LifePage = () => {
       return
     }
 
-    const actualActive = geneticAnchorElement.getBoundingClientRect().y > 0 ? 0 : 1
+    const actualActive = geneticAnchorElement.getBoundingClientRect().y > 100 ? 0 : 1
 
     if (active !== actualActive) {
       setActive(actualActive)

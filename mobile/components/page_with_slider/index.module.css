@@ -10,23 +10,31 @@
   margin-top: 75px;
   width: 100%;
 }
+/* @media all and (orientation:landscape) {
+  .images {
+    margin-top: 75px;
+    width: 60%;
+  }
+} */
 .content {
-  padding: 0px 15px 15px 15px;
+  padding: 0px 20px 20px 20px;
   margin-bottom: 100px;
   margin-top: 40px;
   flex: 1 1;
   overflow-y: auto;
   z-index: 1;
+  max-width: 800px;
 }
 
 .title {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 30px;
   text-align: center;
 }
 
 .text {
-  font-size: 14px;
+  padding-top: 10px;
+  font-size: 16px;
   line-height: 120%;
 }

@@ -4,6 +4,7 @@ import { ImageCarousel } from '../image_carousel'
 import css from './index.module.css'
 import { Swipeable, EventData } from 'react-swipeable'
 import { useRef } from 'react';
+import { Up ,Down} from '../../utils/swipe_orientaition'
 
 type Props = {
   data: TDataNode
@@ -24,7 +25,7 @@ export const PageWithSlider = (props: Props) => {
   const contnetSwipingHandler = (e: EventData) => {
     if(isFirstSwipeEvent.current) {
       isFirstSwipeEvent.current = false
-      if (e.dir === 'Up' || e.dir === 'Down') {
+      if (e.dir === Up() || e.dir === Down()) {
         isVerticalSwipeRef.current = true
       }
     }

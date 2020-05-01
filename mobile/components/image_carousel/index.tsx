@@ -3,6 +3,7 @@ import { TImage } from '../../types/image';
 import css from './index.module.css'
 import {Swipeable, EventData} from 'react-swipeable'
 import BezierEasing from 'bezier-easing'
+import { Up, Down, isLanscape } from '../../utils/swipe_orientaition';
 
 type Props = {
   active: number
@@ -66,14 +67,14 @@ export const ImageCarousel = (props: Props) => {
     }
     if (!swipeRef.current) {
       swipeRef.current = true
-      if (e.dir === 'Up' || e.dir === 'Down') {
+      if (e.dir === Up() || e.dir === Down()) {
         horizontalRef.current = true
       }
     }
-
+    const delta = isLanscape() ?  e.deltaX : e.deltaY
     if (horizontalRef.current) {
       e.event.stopPropagation()
-      persentRef.current = e.deltaY / slideHeightRef.current
+      persentRef.current = delta / slideHeightRef.current
       updateListPosition()
     }
   }

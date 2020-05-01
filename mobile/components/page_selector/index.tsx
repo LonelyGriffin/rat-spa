@@ -11,6 +11,7 @@ import { PageWithSlider } from '../page_with_slider'
 import cn from 'classnames'
 import { LifePage } from '../life_page'
 import {AboutPage} from '../about_page';
+import { Left, Right, isLanscape } from '../../utils/swipe_orientaition';
 
 const easeOutCirc = BezierEasing(0.445, 0.05, 0.55, 0.95)
 
@@ -45,11 +46,11 @@ const PageSelectorComponent = (props: Props) => {
   const [p, setP] = useState(0)
 
   const handleSwiping = (e: EventData) => {
-    if (e.dir !== 'Left' && e.dir !== 'Right') {
+    if (e.dir !== Left() && e.dir !== Right()) {
       return
     }
-
-    const percent = - e.deltaX / screenWidth.current
+    const delta = isLanscape() ? -e.deltaY : e.deltaX
+    const percent = -delta / screenWidth.current
     setP(percent)
   }
 
@@ -80,7 +81,7 @@ const PageSelectorComponent = (props: Props) => {
   })
 
   const handleSwiped = async (e: EventData) => {
-    if (e.dir !== 'Left' && e.dir !== 'Right') {
+    if (e.dir !== Left() && e.dir !== Right()) {
       return
     }
 
@@ -231,7 +232,7 @@ const PageSelectorComponent = (props: Props) => {
         <div className={css.header}>
           <h1 className={css.headerTitle} style={{top: titlePositionPersent * 18, opacity: 1 - Math.abs(p)}}>{headerTitle}</h1>
           <h1 className={css.headerTitle}  style={{top: titlePositionPersent * 18, opacity: Math.abs(p)}}>{targetHeaderTitle}</h1>
-          {<div className={css.headerSections} style={{top: 27, opacity: sectionsOpacity}}>
+          {<div className={css.headerSections} style={{top: 30, opacity: sectionsOpacity}}>
             {(headerSections.length > 0 ? headerSections : targetHeaderSections).map((section, i) => (
               <div
                 className={cn(css.headerSection, i === headerActiveSection && css.headerActiveSection)}
