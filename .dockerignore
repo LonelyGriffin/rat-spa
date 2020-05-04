@@ -1,0 +1,7 @@
+desktop
+mobile
+!desktop/out
+!mobile/out
+.vscode
+.git
+.gitignore
