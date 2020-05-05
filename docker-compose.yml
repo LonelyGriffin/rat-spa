@@ -1,0 +1,21 @@
+version: "2"
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - server
+      - stub
+    restart: always
+    environment:
+      DOMAINS: 'rat-island.ru -> http://server, m.rat-island.ru -> http://server'
+      # DOMAINS: 'rat-island.ru -> http://stub, m.rat-island.ru -> http://stub, beta.rat-island.ru -> http://server, m.beta.rat-island.ru -> http://server'
+      STAGE: 'local'
+      # STAGE: 'production' # Don't use production until staging works
+      # FORCE_RENEW: 'true'
+  server:
+    image: lonelygriffin/private:rat-island-server-1.0.0
+  stub:
+    image: lonelygriffin/private:rat-island-stub-1.0.0

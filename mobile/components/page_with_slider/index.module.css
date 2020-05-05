@@ -24,6 +24,8 @@
   overflow-y: auto;
   z-index: 1;
   max-width: 800px;
+  background-color: #222325;
+  box-shadow: 10px 10px 10px 10px #222325, -10px -10px 10px 10px #222325;
 }
 
 .title {

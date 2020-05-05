@@ -14,19 +14,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/body_type/standard_1.jpg',
-            alt: ''
+            alt: 'Телосложение - Стандарт, первая картинка'
           },
           {
             src: '/images/resources/sorts/body_type/standard_2.jpg',
-            alt: ''
+            alt: 'Телосложение - Стандарт, вторая картинка'
           },
           {
             src: '/images/resources/sorts/body_type/standard_3.jpg',
-            alt: ''
+            alt: 'Телосложение - Стандарт, третья картинка'
           },
           {
             src: '/images/resources/sorts/body_type/standard_4.jpg',
-            alt: ''
+            alt: 'Телосложение - Стандарт, четвертая картинка'
           }
         ]
       },
@@ -37,15 +37,15 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/body_type/dambo_1.jpg',
-            alt: ''
+            alt: 'Телосложение - Дамбо, первая картинка'
           },
           {
             src: '/images/resources/sorts/body_type/dambo_2.jpg',
-            alt: ''
+            alt: 'Телосложение - Дамбо, вторая картинка'
           },
           {
             src: '/images/resources/sorts/body_type/dambo_3.jpg',
-            alt: ''
+            alt: 'Телосложение - Дамбо, третья картинка'
           }
         ]
       },
@@ -56,15 +56,15 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/body_type/manx_1.jpg',
-            alt: ''
+            alt: 'Телосложение - Манкс, первая картинка'
           },
           {
             src: '/images/resources/sorts/body_type/manx_2.jpg',
-            alt: ''
+            alt: 'Телосложение - Манкс, вторая картинка'
           },
           {
             src: '/images/resources/sorts/body_type/manx_3.jpg',
-            alt: ''
+            alt: 'Телосложение - Манкс, третья картинка'
           }
         ]
       }
@@ -80,15 +80,15 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/skin_type/standard_1.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Стандартные, первая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/standard_2.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Стандартные, вторая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/standard_3.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Стандартные, третья картинка'
           },
         ]
       },
@@ -99,15 +99,15 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/skin_type/sphinx_1.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сфинксы, первая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/sphinx_2.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сфинксы, вторая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/sphinx_3.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сфинксы, третья картинка'
           },
         ]
       },
@@ -118,15 +118,15 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/skin_type/downy_1.jpeg',
-            alt: ''
+            alt: 'Тип шерсти - Пуховые, первая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/downy_2.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Пуховые, вторая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/downy_3.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Пуховые, третья картинка'
           },
         ]
       },
@@ -137,19 +137,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/skin_type/satin_1.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сатиновые, первая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/satin_2.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сатиновые, вторая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/satin_3.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сатиновые, третья картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/satin_4.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Сатиновые, четвертая картинка'
           },
         ]
       },
@@ -160,19 +160,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/skin_type/rex_1.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Рексы, первая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/rex_2.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Рексы, вторая картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/rex_3.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Рексы, третья картинка'
           },
           {
             src: '/images/resources/sorts/skin_type/rex_4.jpg',
-            alt: ''
+            alt: 'Тип шерсти - Рексы, четвертая картинка'
           },
         ]
       }
@@ -188,19 +188,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/color/uniform_1.jpg',
-            alt: ''
+            alt: 'Окрас - Однородные, первая картинка'
           },
           {
             src: '/images/resources/sorts/color/uniform_2.jpg',
-            alt: ''
+            alt: 'Окрас - Однородные, вторая картинка'
           },
           {
             src: '/images/resources/sorts/color/uniform_3.jpg',
-            alt: ''
+            alt: 'Окрас - Однородные, третья картинка'
           },
           {
             src: '/images/resources/sorts/color/uniform_4.jpg',
-            alt: ''
+            alt: 'Окрас - Однородные, четвертая картинка'
           },
         ]
       },
@@ -211,23 +211,23 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/color/ticked_1.jpg',
-            alt: ''
+            alt: 'Окрас - Тикированные, первая картинка'
           },
           {
             src: '/images/resources/sorts/color/ticked_2.jpg',
-            alt: ''
+            alt: 'Окрас - Тикированные, вторая картинка'
           },
           {
             src: '/images/resources/sorts/color/ticked_3.jpg',
-            alt: ''
+            alt: 'Окрас - Тикированные, третья картинка'
           },
           {
             src: '/images/resources/sorts/color/ticked_4.jpg',
-            alt: ''
+            alt: 'Окрас - Тикированные, четвертая картинка'
           },
           {
             src: '/images/resources/sorts/color/ticked_5.jpg',
-            alt: ''
+            alt: 'Окрас - Тикированные, пятая картинка'
           },
         ]
       },
@@ -238,19 +238,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/color/silver_1.jpg',
-            alt: ''
+            alt: 'Окрас - Серебристые, первая картинка'
           },
           {
             src: '/images/resources/sorts/color/silver_2.jpg',
-            alt: ''
+            alt: 'Окрас - Серебристые, вторая картинка'
           },
           {
             src: '/images/resources/sorts/color/silver_3.jpg',
-            alt: ''
+            alt: 'Окрас - Серебристые, третья картинка'
           },
           {
             src: '/images/resources/sorts/color/silver_4.jpg',
-            alt: ''
+            alt: 'Окрас - Серебристые, четвертая картинка'
           },
         ]
       },
@@ -261,19 +261,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/color/combined_1.jpg',
-            alt: ''
+            alt: 'Окрас - Комбинированные, первая картинка'
           },
           {
             src: '/images/resources/sorts/color/combined_2.jpg',
-            alt: ''
+            alt: 'Окрас - Комбинированные, вторая картинка'
           },
           {
             src: '/images/resources/sorts/color/combined_3.jpg',
-            alt: ''
+            alt: 'Окрас - Комбинированные, третья картинка'
           },
           {
             src: '/images/resources/sorts/color/combined_4.jpg',
-            alt: ''
+            alt: 'Окрас - Комбинированные, четвертая картинка'
           },
         ]
       },
@@ -284,23 +284,23 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/color/marked_1.jpg',
-            alt: ''
+            alt: 'Окрас - Маркированные, первая картинка'
           },
           {
             src: '/images/resources/sorts/color/marked_2.jpg',
-            alt: ''
+            alt: 'Окрас - Маркированные, вторая картинка'
           },
           {
             src: '/images/resources/sorts/color/marked_3.jpg',
-            alt: ''
+            alt: 'Окрас - Маркированные, третья картинка'
           },
           {
             src: '/images/resources/sorts/color/marked_4.jpg',
-            alt: ''
+            alt: 'Окрас - Маркированные, четвертая картинка'
           },
           {
             src: '/images/resources/sorts/color/marked_5.jpg',
-            alt: ''
+            alt: 'Окрас - Маркированные, пятая картинка'
           },
         ]
       },
@@ -311,19 +311,19 @@ export const SLIDES: SlideType<ImageDataType[]>[] = [
         data: [
           {
             src: '/images/resources/sorts/color/albinos_1.jpg',
-            alt: ''
+            alt: 'Окрас - Альбиносы, первая картинка'
           },
           {
             src: '/images/resources/sorts/color/albinos_2.jpg',
-            alt: ''
+            alt: 'Окрас - Альбиносы, вторая картинка'
           },
           {
             src: '/images/resources/sorts/color/albinos_3.jpg',
-            alt: ''
+            alt: 'Окрас - Альбиносы, третья картинка'
           },
           {
             src: '/images/resources/sorts/color/albinos_4.jpg',
-            alt: ''
+            alt: 'Окрас - Альбиносы, четвертая картинка'
           },
         ]
       }

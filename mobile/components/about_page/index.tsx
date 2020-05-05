@@ -59,13 +59,6 @@ export const AboutPage = () => {
                     <div className={css.mail_icon}/>Kateartprint
                   </a>
                 </dd>
-                <dt>Исходный код доступен здесь:</dt>
-                <dd>
-                  <a className={css.link} href="https://github.com/LonelyGriffin/rat-spa">
-                    <div className={css.github_icon}/>
-                    Github
-                  </a>
-                </dd>
                 <dt>Контакт для любых вопросов:</dt>
                 <dd>
                   <a className={css.link} href="mailto:lonelygriffin@gmail.com">

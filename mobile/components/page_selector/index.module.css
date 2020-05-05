@@ -21,6 +21,7 @@
   top: 0;
   z-index: 1;
   overflow: hidden;
+  z-index: 2;
 }
 
 .circleSeparator {
@@ -31,7 +32,6 @@
   left: calc(50vw - 2000px);
   top: calc(80px + 100vw * 400 / 600 + 20px);
   border: 3px solid rgba(182, 141, 64, 0.5);
-  background-color: rgba(34, 35, 37, 0.9);
   box-shadow: 5px 5px 10px 10px #222325;
   box-sizing: border-box;
 }
