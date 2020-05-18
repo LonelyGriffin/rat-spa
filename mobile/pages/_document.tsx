@@ -17,6 +17,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#222325"/>
           <link rel="apple-touch-icon" href="/logo192.png"/>
           <link rel="manifest" href="/manifest.json"/>
+          <script type="text/javascript" src="/metrika.js"/>
         </Head>
         <body>
         <Main />
